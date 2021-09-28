@@ -10,7 +10,7 @@ import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 public class SignUp extends javax.swing.JFrame {
-
+    
     public SignUp() {
         initComponents();
     }
@@ -217,27 +217,29 @@ public class SignUp extends javax.swing.JFrame {
                     // create an object for the user to register
                     Users newUser = new Users(UserID, Password, email);
                     // read all informations of application users from the Users File
-                    newUser.ReadInformations();
+                    Users.ReadInformations();
                     // check if the ID already Registered
                     if (newUser.isIDExist(UserID) == true) {
                         JOptionPane.showMessageDialog(null, "The ID is already Registered");
                     } else { // successfully registered, add to Users File
                         newUser.RegisterUser(newUser);
                         JOptionPane.showMessageDialog(null, "Registration Completed Successfully");
-
+                        this.dispose();
+                        new EmployeeInterface().setVisible(true);
+                        
                     }
                 }
             }
-
+            
         } catch (Exception ex) {
-
+            
         }
-
+        
 
     }//GEN-LAST:event_SignUpActionPerformed
-
+    
     public static void CheckID() {
-
+        
     }
 
     /**
