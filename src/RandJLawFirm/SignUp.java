@@ -215,13 +215,13 @@ public class SignUp extends javax.swing.JFrame {
                     JOptionPane.showMessageDialog(null, "The email is not correct");
                 } else { // else if all entered data is correct 
                     // create an object for the user to register
-                    Users newUser = new Users(UserID, Password, email);
-                    // read all informations of application users from the Users File
-                    Users.ReadInformations();
+                    User newUser = new User(UserID, Password, email);
+                    // read all informations of application users from the User File
+                    User.ReadInformations();
                     // check if the ID already Registered
                     if (newUser.isIDExist(UserID) == true) {
                         JOptionPane.showMessageDialog(null, "The ID is already Registered");
-                    } else { // successfully registered, add to Users File
+                    } else { // successfully registered, add to User File
                         newUser.RegisterUser(newUser);
                         JOptionPane.showMessageDialog(null, "Registration Completed Successfully");
                         this.dispose();

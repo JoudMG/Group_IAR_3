@@ -120,10 +120,10 @@ public class LogIn extends javax.swing.JFrame {
         String Password = forPass.getText();
 
         try {
-            Users.ReadInformations();
+            User.ReadInformations();
             Boolean Found = false;
-            for (int i = 0; i < Users.UserDb.size(); i++) {
-                if (Users.UserDb.get(i).getID().equals(ID) && Users.UserDb.get(i).getPassword().equals(Password)) {
+            for (int i = 0; i < User.UserDb.size(); i++) {
+                if (User.UserDb.get(i).getID().equals(ID) && User.UserDb.get(i).getPassword().equals(Password)) {
                     Found = true;
                     JOptionPane.showMessageDialog(null, "You are logged in successfully");
                     new EmployeeInterface().setVisible(true);
