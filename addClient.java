@@ -19,8 +19,7 @@ import static javax.swing.text.html.HTML.Attribute.ID;
  * @author HP
  */
 public class addClient extends javax.swing.JFrame {
-
-    ;
+  ;
 
     /**
      * Creates new form addClient
@@ -47,7 +46,7 @@ public class addClient extends javax.swing.JFrame {
         fName = new javax.swing.JTextField();
         LName = new javax.swing.JTextField();
         phone = new javax.swing.JTextField();
-        SSN = new javax.swing.JTextField();
+        ID = new javax.swing.JTextField();
         email = new javax.swing.JTextField();
         iban = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
@@ -60,7 +59,7 @@ public class addClient extends javax.swing.JFrame {
 
         jLabel2.setText("Last Name:");
 
-        id.setText("SSN:");
+        id.setText("ID:");
 
         jLabel4.setText("Email:");
 
@@ -86,9 +85,9 @@ public class addClient extends javax.swing.JFrame {
             }
         });
 
-        SSN.addActionListener(new java.awt.event.ActionListener() {
+        ID.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                SSNActionPerformed(evt);
+                IDActionPerformed(evt);
             }
         });
 
@@ -141,14 +140,12 @@ public class addClient extends javax.swing.JFrame {
                                     .addComponent(phone)))
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(91, 91, 91))
                                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                         .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(55, 55, 55))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGap(83, 83, 83)))
+                                        .addGap(55, 55, 55)))
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(LName, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(email, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -156,14 +153,17 @@ public class addClient extends javax.swing.JFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(id, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(91, 91, 91)
-                                .addComponent(SSN, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addComponent(ID, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(73, 73, 73)
                         .addComponent(jLabel7)
                         .addGap(43, 43, 43)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(gender, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(gender, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(35, 35, 35)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(136, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -180,7 +180,7 @@ public class addClient extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(id, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(SSN, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(ID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(email, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -217,9 +217,9 @@ public class addClient extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_phoneActionPerformed
 
-    private void SSNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SSNActionPerformed
+    private void IDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_IDActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_SSNActionPerformed
+    }//GEN-LAST:event_IDActionPerformed
 
     private void emailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_emailActionPerformed
         // TODO add your handling code here:
@@ -234,24 +234,21 @@ public class addClient extends javax.swing.JFrame {
     }//GEN-LAST:event_genderActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        try {
-
-            if (fName.getText().isEmpty() || LName.getText().isEmpty()
-                    || SSN.getText().isEmpty() || email.getText().isEmpty()
-                    || phone.getText().isEmpty() || iban.getText().isEmpty()) {
+       try {
+           
+            if (fName.getText().isEmpty()|| LName.getText().isEmpty() || ID.getText().isEmpty()||email.getText().isEmpty()||phone.getText().isEmpty()||iban.getText().isEmpty())  {
                 throw new Exception("You MUST fill All the feilds!!");
-            } else {
-                // To Setup clients array by store all previous client information in text file if the array empty
-                Client.ReadInformations();
-                // Add new Client to the array and store client information on the file
-                Client.AddClient(new Client( fName.getText(), LName.getText(), SSN.getText(), 
-                                            email.getText(), phone.getText(), iban.getText(),gender.getSelectedItem().toString().charAt(0)));                
-                JOptionPane.showMessageDialog(null, "The Client has been Added successfully");
+                
+            } else{
+                JOptionPane.showMessageDialog(null, "The Client has been Added succefully");
+              
+                
             }
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(null, ex.toString());
         }
-
+          
+        
 
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -291,8 +288,8 @@ public class addClient extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField ID;
     private javax.swing.JTextField LName;
-    private javax.swing.JTextField SSN;
     private javax.swing.JTextField email;
     private javax.swing.JTextField fName;
     private javax.swing.JComboBox gender;

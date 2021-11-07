@@ -28,31 +28,64 @@ public class EmployeeInterface extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
+        AddClient = new javax.swing.JButton();
+        ModifyClient = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setText("In progress ....");
+        AddClient.setText("Add Client");
+        AddClient.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AddClientActionPerformed(evt);
+            }
+        });
+
+        ModifyClient.setText("Modify Client");
+        ModifyClient.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ModifyClientActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(225, 225, 225)
-                .addComponent(jLabel1)
-                .addContainerGap(234, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(213, 213, 213)
+                        .addComponent(AddClient))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(205, 205, 205)
+                        .addComponent(ModifyClient)))
+                .addContainerGap(235, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(246, 246, 246)
-                .addComponent(jLabel1)
-                .addContainerGap(287, Short.MAX_VALUE))
+                .addGap(151, 151, 151)
+                .addComponent(AddClient)
+                .addGap(26, 26, 26)
+                .addComponent(ModifyClient)
+                .addContainerGap(318, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void AddClientActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddClientActionPerformed
+
+AddClient.setVisible(true);
+this.dispose();
+
+
+    }//GEN-LAST:event_AddClientActionPerformed
+
+    private void ModifyClientActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ModifyClientActionPerformed
+ModifyClient.setVisible(true);
+this.dispose();
+    }//GEN-LAST:event_ModifyClientActionPerformed
 
     /**
      * @param args the command line arguments
@@ -90,6 +123,7 @@ public class EmployeeInterface extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JButton AddClient;
+    private javax.swing.JButton ModifyClient;
     // End of variables declaration//GEN-END:variables
 }
