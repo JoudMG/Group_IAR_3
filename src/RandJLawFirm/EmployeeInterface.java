@@ -1,11 +1,14 @@
 package RandJLawFirm;
 
+import java.io.FileNotFoundException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 /**
  *
  * @author iijoo
@@ -30,6 +33,7 @@ public class EmployeeInterface extends javax.swing.JFrame {
 
         AddClient = new javax.swing.JButton();
         ModifyClient = new javax.swing.JButton();
+        DeleteClient = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -47,18 +51,23 @@ public class EmployeeInterface extends javax.swing.JFrame {
             }
         });
 
+        DeleteClient.setText("Delete Client");
+        DeleteClient.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                DeleteClientActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(213, 213, 213)
-                        .addComponent(AddClient))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(205, 205, 205)
-                        .addComponent(ModifyClient)))
+                .addGap(205, 205, 205)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(ModifyClient, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(DeleteClient, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(AddClient, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(235, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -68,24 +77,36 @@ public class EmployeeInterface extends javax.swing.JFrame {
                 .addComponent(AddClient)
                 .addGap(26, 26, 26)
                 .addComponent(ModifyClient)
-                .addContainerGap(318, Short.MAX_VALUE))
+                .addGap(30, 30, 30)
+                .addComponent(DeleteClient)
+                .addContainerGap(259, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void AddClientActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddClientActionPerformed
-
-AddClient.setVisible(true);
-this.dispose();
-
-
+        new addClient().setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_AddClientActionPerformed
 
     private void ModifyClientActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ModifyClientActionPerformed
-ModifyClient.setVisible(true);
-this.dispose();
+        try {
+            new ModifyClient().setVisible(true);
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(EmployeeInterface.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        this.dispose();
     }//GEN-LAST:event_ModifyClientActionPerformed
+
+    private void DeleteClientActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DeleteClientActionPerformed
+        try {
+            new DeleteClient().setVisible(true);
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(EmployeeInterface.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        this.dispose();
+    }//GEN-LAST:event_DeleteClientActionPerformed
 
     /**
      * @param args the command line arguments
@@ -124,6 +145,7 @@ this.dispose();
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton AddClient;
+    private javax.swing.JButton DeleteClient;
     private javax.swing.JButton ModifyClient;
     // End of variables declaration//GEN-END:variables
 }

@@ -107,7 +107,6 @@ public class Client {
         this.Gender = Gender;
     }
 
-    
     public static void AddClient(Client newClient) throws FileNotFoundException, IOException {
 
         // Appened new information on existing file
@@ -129,12 +128,20 @@ public class Client {
 
     }
 
-
     public static void ModifyClientInformationOnDB(int lineNumber, String data) throws IOException {
         // get all file lines into a list of string
         List<String> lines = Files.readAllLines(ClientFile.toPath(), StandardCharsets.UTF_8);
         // modify specific line with passed data (new value)
         lines.set(lineNumber - 1, data);
+        // set changes to file 
+        Files.write(ClientFile.toPath(), lines, StandardCharsets.UTF_8);
+    }
+
+    public static void DeleteClientInformationOnDB(int ClientIndexNumber) throws IOException {
+        // get all file lines into a list of string
+        List<String> lines = Files.readAllLines(ClientFile.toPath(), StandardCharsets.UTF_8);
+        // modify specific line with passed data (new value)
+        lines.subList(ClientIndexNumber, ClientIndexNumber+7).clear();
         // set changes to file 
         Files.write(ClientFile.toPath(), lines, StandardCharsets.UTF_8);
     }
