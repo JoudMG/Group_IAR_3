@@ -21,7 +21,7 @@ public class ModifyClient extends javax.swing.JFrame {
     /**
      * Creates new form ModifyClient
      */
-    int index;
+    int index; // For Mouse click event on the table
 
     public void TableContent() throws FileNotFoundException {
 
