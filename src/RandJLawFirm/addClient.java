@@ -246,7 +246,7 @@ public class addClient extends javax.swing.JFrame {
                 // Add new Client to the array and store client information on the file
                 Client.AddClient(new Client( fName.getText(), LName.getText(), SSN.getText(), 
                                             email.getText(), phone.getText(), iban.getText(),gender.getSelectedItem().toString().charAt(0)));                
-                JOptionPane.showMessageDialog(null, "The Client has been Added succefully");
+                JOptionPane.showMessageDialog(null, "The Client has been Added successfully");
             }
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(null, ex.toString());

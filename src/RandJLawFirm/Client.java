@@ -1,11 +1,17 @@
 package RandJLawFirm;
 
+import java.util.List;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -18,7 +24,7 @@ public class Client {
     private String Phone;
     private String BankIBAN;
     private char Gender;
-    private static ArrayList<Client> Clients = new ArrayList<>();
+    public static ArrayList<Client> Clients = new ArrayList<>();
     private static File ClientFile = new File("ClientsFile.txt");
 
     public Client(String FirstName, String LastName, String SSN, String Email, String Phone, String BankIBAN, char Gender) {
@@ -31,17 +37,17 @@ public class Client {
         this.Gender = Gender;
     }
 
-
     public static void ReadInformations() throws FileNotFoundException {
 
-        if (Clients.isEmpty()&& ClientFile.exists()) {// if not empty, thats mean it alredy enter this method
+        if (Clients.isEmpty() && ClientFile.exists()) {// if not empty, thats mean it alredy enter this method
             Scanner scan = new Scanner(ClientFile);
             while (scan.hasNextLine()) {
                 // add existing clients to arraylist
                 Clients.add(new Client(scan.nextLine(), scan.nextLine(), scan.nextLine(),
-                        scan.nextLine(), scan.nextLine(), scan.nextLine(), scan.nextLine().charAt(0) ));
+                        scan.nextLine(), scan.nextLine(), scan.nextLine(), scan.nextLine().charAt(0)));
 
             }
+
         }
     }
 
@@ -72,7 +78,34 @@ public class Client {
     public char getGender() {
         return Gender;
     }
-    
+
+    public void setFirstName(String FirstName) {
+        this.FirstName = FirstName;
+    }
+
+    public void setLastName(String LastName) {
+        this.LastName = LastName;
+    }
+
+    public void setSSN(String SSN) {
+        this.SSN = SSN;
+    }
+
+    public void setEmail(String Email) {
+        this.Email = Email;
+    }
+
+    public void setPhone(String Phone) {
+        this.Phone = Phone;
+    }
+
+    public void setBankIBAN(String BankIBAN) {
+        this.BankIBAN = BankIBAN;
+    }
+
+    public void setGender(char Gender) {
+        this.Gender = Gender;
+    }
 
     
     public static void AddClient(Client newClient) throws FileNotFoundException, IOException {
@@ -90,11 +123,20 @@ public class Client {
             printer.println(newClient.getPhone());
             printer.println(newClient.getBankIBAN());
             printer.println(newClient.getGender());
-
         } catch (IOException e) {
 
         }
 
+    }
+
+
+    public static void ModifyClientInformationOnDB(int lineNumber, String data) throws IOException {
+        // get all file lines into a list of string
+        List<String> lines = Files.readAllLines(ClientFile.toPath(), StandardCharsets.UTF_8);
+        // modify specific line with passed data (new value)
+        lines.set(lineNumber - 1, data);
+        // set changes to file 
+        Files.write(ClientFile.toPath(), lines, StandardCharsets.UTF_8);
     }
 
 }
