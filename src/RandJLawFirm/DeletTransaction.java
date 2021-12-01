@@ -23,19 +23,11 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumnModel;
 import java.util.Vector;
 
-
-/**
- *
- * @author sania
- */
 public class DeletTransaction extends javax.swing.JFrame {
 
-    /**
-     * Creates new form DeletTransaction
-     * 
-     *
-     */
-    int index=-1;
+    File CaseFile;
+    int index = -1;
+
     public void TableContent() throws FileNotFoundException {
 
         // Set Table Rows and Columns Sizes
@@ -57,11 +49,15 @@ public class DeletTransaction extends javax.swing.JFrame {
 
             row.add(Transaction.transactions.get(i).getCaseNumber());
             row.add(Transaction.transactions.get(i).getCaseTitle());
-            row.add(Transaction.transactions.get(i).getCaseDoc());
+            CaseFile = new File(Transaction.getTransactions().get(i).getCaseDoc());
+            row.add(CaseFile.getName());
+
             row.add(Transaction.transactions.get(i).getStatus());
-            
+
             model.addRow(row);
-        }}
+        }
+    }
+
     public DeletTransaction() throws FileNotFoundException {
         initComponents();
         TableContent();
@@ -169,7 +165,7 @@ public class DeletTransaction extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
-         index = jTable1.getSelectedRow();
+        index = jTable1.getSelectedRow();
     }//GEN-LAST:event_jTable1MouseClicked
 
     private void jTable1InputMethodTextChanged(java.awt.event.InputMethodEvent evt) {//GEN-FIRST:event_jTable1InputMethodTextChanged
@@ -178,8 +174,8 @@ public class DeletTransaction extends javax.swing.JFrame {
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
-         try {
-            if (index == -1) { 
+        try {
+            if (index == -1) {
                 // In case user press "delete" button while user didn't choose client to delete
                 JOptionPane.showConfirmDialog(null,
                         "You Did Not Select Client to Delete",
@@ -187,11 +183,11 @@ public class DeletTransaction extends javax.swing.JFrame {
                         JOptionPane.INFORMATION_MESSAGE);
             } else {
                 int choice = JOptionPane.showConfirmDialog(null,
-                        "Are you Sure You Want to Delete " +"Case No "+ Transaction.transactions.get(index).getCaseNumber() + "  Case Title "
+                        "Are you Sure You Want to Delete " + "Case No " + Transaction.transactions.get(index).getCaseNumber() + "  Case Title "
                         + Transaction.transactions.get(index).getCaseTitle() + " ?",
-                        "Confirm Client Deletion", JOptionPane.YES_NO_OPTION,
+                        "Confirm Case Deletion", JOptionPane.YES_NO_OPTION,
                         JOptionPane.ERROR_MESSAGE);
-                
+
                 if (choice == JOptionPane.YES_OPTION) {
                     // delete from the file "Our Database"
                     Transaction.DeleteTrans(index * 4);

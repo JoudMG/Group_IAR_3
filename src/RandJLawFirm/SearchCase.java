@@ -121,20 +121,17 @@ public class SearchCase extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-
         int caseIndex = Transaction.SearchTransactio(caseNum.getText());
 
         if (caseIndex == -1) {
-            JOptionPane.showMessageDialog(null, "Transaction has been Added succefully", "Not Foun", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Case Number That You Entered Is Not Exist!", "Not Found", JOptionPane.ERROR_MESSAGE);
         } else {
-           new ViewCaseDetails().setVisible(true);
-           this.dispose();
+            new ViewCaseDetails().setVisible(true);
+            this.dispose();
         }
-
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void caseNumActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_caseNumActionPerformed
-
 
     }//GEN-LAST:event_caseNumActionPerformed
 

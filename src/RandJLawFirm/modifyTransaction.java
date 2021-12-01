@@ -10,6 +10,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.nio.file.Files;
+import static java.nio.file.StandardCopyOption.REPLACE_EXISTING;
 import java.util.Vector;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -266,11 +267,12 @@ public class modifyTransaction extends javax.swing.JFrame {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
 
         try {
+            int TransactionAttributes = 4;
             boolean changeFound = false;// to print massage to user 
             if (!caseNum.getText().equals(Transaction.getTransactions().get(index).getCaseNumber())) {
 
                 // The method will only overwrite on previous value on the file
-                Transaction.ModifyTrans((index * 4) + 1, caseNum.getText());
+                Transaction.ModifyTrans((index * TransactionAttributes) + 1, caseNum.getText());
                 // modify on arraylist
                 Transaction.transactions.get(index).setCaseNumber(caseNum.getText());
                 changeFound = true;
@@ -278,23 +280,23 @@ public class modifyTransaction extends javax.swing.JFrame {
             }
             if (!caseTitle.getText().equals(Transaction.transactions.get(index).getCaseTitle())) {
 
-                Transaction.ModifyTrans((index * 4) + 2, caseTitle.getText());
+                Transaction.ModifyTrans((index * TransactionAttributes) + 2, caseTitle.getText());
 
                 Transaction.transactions.get(index).setCaseTitle(caseTitle.getText());
                 changeFound = true;
             }
             if (!Status.getText().equals(Transaction.transactions.get(index).getStatus())) {
 
-                Transaction.ModifyTrans((index * 4) + 3, Status.getText());
+                Transaction.ModifyTrans((index * TransactionAttributes) + 4, Status.getText());
 
                 Transaction.transactions.get(index).setStatus(Status.getText());
                 changeFound = true;
             }
-            if (!caseDoc.getName().equals(Transaction.transactions.get(index).getStatus())) {
+            if (!("Transactions\\" + CaseDoc.getText()).equals(Transaction.transactions.get(index).getCaseDoc())) {
 
-                Transaction.ModifyTrans((index * 4) + 4, caseDoc.getName());
+                Transaction.ModifyTrans((index * TransactionAttributes) + 3, "Transactions\\" + caseDoc.getName());
 
-                Transaction.transactions.get(index).setCaseDoc(caseDoc.getName());
+                Transaction.transactions.get(index).setCaseDoc("Transactions\\" + caseDoc.getName());
                 changeFound = true;
             }
             if (changeFound) {
@@ -344,11 +346,10 @@ public class modifyTransaction extends javax.swing.JFrame {
         caseDoc = new File(filename);
         File currentDirFile = new File("Transactions\\" + caseDoc.getName());
         try {
-            Files.copy(caseDoc.toPath(), currentDirFile.toPath());
-            
+            Files.copy(caseDoc.toPath(), currentDirFile.toPath(), REPLACE_EXISTING);
         } catch (IOException ex) {
             Logger.getLogger(modifyTransaction.class.getName()).log(Level.SEVERE, null, ex);
-        }        // TODO add your handling code here:
+        }
     }//GEN-LAST:event_OpenFile1ActionPerformed
 
     private void CaseDocActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CaseDocActionPerformed
