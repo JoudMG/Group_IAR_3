@@ -129,7 +129,7 @@ public class Client {
     }
 
     public static void ModifyClientInformationOnDB(int lineNumber, String data) throws IOException {
-        // get all file lines into a list of string
+        // get all file content as lines into a list of string
         List<String> lines = Files.readAllLines(ClientFile.toPath(), StandardCharsets.UTF_8);
         // modify specific line with passed data (new value)
         lines.set(lineNumber - 1, data);
@@ -138,9 +138,10 @@ public class Client {
     }
 
     public static void DeleteClientInformationOnDB(int ClientIndexNumber) throws IOException {
-        // get all file lines into a list of string
+        // get all file content as lines into a list of string
         List<String> lines = Files.readAllLines(ClientFile.toPath(), StandardCharsets.UTF_8);
-        // modify specific line with passed data (new value)
+        // Delete lines that contains client information 
+        // each client has 7 lines
         lines.subList(ClientIndexNumber, ClientIndexNumber+7).clear();
         // set changes to file 
         Files.write(ClientFile.toPath(), lines, StandardCharsets.UTF_8);
