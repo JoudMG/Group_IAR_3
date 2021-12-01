@@ -30,13 +30,13 @@ public class DeleteClient extends javax.swing.JFrame {
         // Set Table Rows and Columns Sizes
         ClientsInformation.setRowHeight(20);
         TableColumnModel columnModel = ClientsInformation.getColumnModel();
-        columnModel.getColumn(0).setPreferredWidth(50);
-        columnModel.getColumn(1).setPreferredWidth(50);
-        columnModel.getColumn(2).setPreferredWidth(10);
-        columnModel.getColumn(3).setPreferredWidth(60);
-        columnModel.getColumn(4).setPreferredWidth(50);
-        columnModel.getColumn(5).setPreferredWidth(100);
-        columnModel.getColumn(6).setPreferredWidth(130);
+        columnModel.getColumn(0).setPreferredWidth(30);
+        columnModel.getColumn(1).setPreferredWidth(30);
+        columnModel.getColumn(2).setPreferredWidth(7);
+        columnModel.getColumn(3).setPreferredWidth(30);
+        columnModel.getColumn(4).setPreferredWidth(35);
+        columnModel.getColumn(5).setPreferredWidth(130);
+        columnModel.getColumn(6).setPreferredWidth(80);
         // declare table variable to start fill the table with clients information
         DefaultTableModel ClientsTable = (DefaultTableModel) ClientsInformation.getModel();
         // clear table from any values 
@@ -55,6 +55,7 @@ public class DeleteClient extends javax.swing.JFrame {
             row.add(Client.Clients.get(i).getBankIBAN());
             ClientsTable.addRow(row);
         }
+        
 
     }
 
@@ -72,16 +73,17 @@ public class DeleteClient extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel3 = new javax.swing.JLabel();
         jScrollPane3 = new javax.swing.JScrollPane();
         ClientsInformation = new javax.swing.JTable();
+        Interface = new javax.swing.JLabel();
         Delete = new javax.swing.JButton();
+        back = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(970, 760));
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabel3.setText("Clients ");
-
+        ClientsInformation.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         ClientsInformation.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -90,6 +92,8 @@ public class DeleteClient extends javax.swing.JFrame {
                 "First Name", "Last Name", "Gender", "Phone Number", "SSN", "Email", "Bank Account Number"
             }
         ));
+        ClientsInformation.setFillsViewportHeight(true);
+        ClientsInformation.setRowHeight(18);
         ClientsInformation.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 ClientsInformationMouseClicked(evt);
@@ -97,40 +101,27 @@ public class DeleteClient extends javax.swing.JFrame {
         });
         jScrollPane3.setViewportView(ClientsInformation);
 
+        getContentPane().add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(18, 214, 915, 367));
+
+        Interface.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaces/DeleteClient.png"))); // NOI18N
+        Interface.setText("jLabel1");
+        getContentPane().add(Interface, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 950, 700));
+
         Delete.setText("Delete Client");
         Delete.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 DeleteActionPerformed(evt);
             }
         });
+        getContentPane().add(Delete, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 620, 350, 60));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(53, 53, 53)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel3)
-                            .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 741, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(372, 372, 372)
-                        .addComponent(Delete)))
-                .addContainerGap(63, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(82, 82, 82)
-                .addComponent(jLabel3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(83, 83, 83)
-                .addComponent(Delete)
-                .addContainerGap(112, Short.MAX_VALUE))
-        );
+        back.setText("jLabel1");
+        back.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                backMouseClicked(evt);
+            }
+        });
+        getContentPane().add(back, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 40, -1, 60));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -141,7 +132,7 @@ public class DeleteClient extends javax.swing.JFrame {
 
     private void DeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DeleteActionPerformed
         try {
-            if (index == -1) { 
+            if (index == -1) {
                 // In case user press "delete" button while user didn't choose client to delete
                 JOptionPane.showConfirmDialog(null,
                         "You Did Not Select Client to Delete",
@@ -153,7 +144,7 @@ public class DeleteClient extends javax.swing.JFrame {
                         + Client.Clients.get(index).getLastName() + " ?",
                         "Confirm Client Deletion", JOptionPane.YES_NO_OPTION,
                         JOptionPane.ERROR_MESSAGE);
-                
+
                 if (choice == JOptionPane.YES_OPTION) {
                     // delete from the file "Our Database"
                     Client.DeleteClientInformationOnDB(index * 7);
@@ -176,6 +167,13 @@ public class DeleteClient extends javax.swing.JFrame {
             Logger.getLogger(DeleteClient.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_DeleteActionPerformed
+
+    private void backMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_backMouseClicked
+
+        new HomePage().setVisible(true);
+        this.dispose();
+
+    }//GEN-LAST:event_backMouseClicked
 
     /**
      * @param args the command line arguments
@@ -219,7 +217,8 @@ public class DeleteClient extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTable ClientsInformation;
     private javax.swing.JButton Delete;
-    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel Interface;
+    private javax.swing.JLabel back;
     private javax.swing.JScrollPane jScrollPane3;
     // End of variables declaration//GEN-END:variables
 }

@@ -1,4 +1,3 @@
-
 package RandJLawFirm;
 
 import java.io.FileNotFoundException;
@@ -21,20 +20,20 @@ public class ModifyClient extends javax.swing.JFrame {
     /**
      * Creates new form ModifyClient
      */
-    int index; // For Mouse click event on the table
+    int index = -1; // For Mouse click event on the table
 
     public void TableContent() throws FileNotFoundException {
 
         // Set Table Rows and Columns Sizes
         ClientsInformation.setRowHeight(20);
         TableColumnModel columnModel = ClientsInformation.getColumnModel();
-        columnModel.getColumn(0).setPreferredWidth(50);
-        columnModel.getColumn(1).setPreferredWidth(50);
-        columnModel.getColumn(2).setPreferredWidth(10);
-        columnModel.getColumn(3).setPreferredWidth(60);
-        columnModel.getColumn(4).setPreferredWidth(50);
-        columnModel.getColumn(5).setPreferredWidth(100);
-        columnModel.getColumn(6).setPreferredWidth(130);
+        columnModel.getColumn(0).setPreferredWidth(30);
+        columnModel.getColumn(1).setPreferredWidth(30);
+        columnModel.getColumn(2).setPreferredWidth(7);
+        columnModel.getColumn(3).setPreferredWidth(30);
+        columnModel.getColumn(4).setPreferredWidth(35);
+        columnModel.getColumn(5).setPreferredWidth(130);
+        columnModel.getColumn(6).setPreferredWidth(80);
         // declare table variable to start fill the table with clients information
         DefaultTableModel ClientsTable = (DefaultTableModel) ClientsInformation.getModel();
         // clear table from any values 
@@ -73,23 +72,17 @@ public class ModifyClient extends javax.swing.JFrame {
 
         ClientsInformation1 = new javax.swing.JTable();
         email = new javax.swing.JTextField();
-        jLabel1 = new javax.swing.JLabel();
         iban = new javax.swing.JTextField();
-        jLabel2 = new javax.swing.JLabel();
-        id = new javax.swing.JLabel();
         gender = new javax.swing.JComboBox();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
         fName = new javax.swing.JTextField();
         LName = new javax.swing.JTextField();
         phone = new javax.swing.JTextField();
         SSN = new javax.swing.JTextField();
-        jLabel3 = new javax.swing.JLabel();
         jScrollPane3 = new javax.swing.JScrollPane();
         ClientsInformation = new javax.swing.JTable();
+        Interface = new javax.swing.JLabel();
         Modify = new javax.swing.JButton();
+        back = new javax.swing.JLabel();
 
         ClientsInformation1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -111,67 +104,67 @@ public class ModifyClient extends javax.swing.JFrame {
         ClientsInformation1.getTableHeader().setReorderingAllowed(false);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(970, 760));
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        email.setFont(new java.awt.Font("Tahoma", 0, 19)); // NOI18N
         email.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 emailActionPerformed(evt);
             }
         });
+        getContentPane().add(email, new org.netbeans.lib.awtextra.AbsoluteConstraints(434, 526, 190, 41));
 
-        jLabel1.setText("First Name:");
-
+        iban.setFont(new java.awt.Font("Tahoma", 0, 19)); // NOI18N
         iban.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ibanActionPerformed(evt);
             }
         });
+        getContentPane().add(iban, new org.netbeans.lib.awtextra.AbsoluteConstraints(226, 608, 233, 41));
 
-        jLabel2.setText("Last Name:");
-
-        id.setText("SSN:");
-
+        gender.setFont(new java.awt.Font("Tahoma", 0, 27)); // NOI18N
         gender.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "M", "F", "" }));
         gender.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 genderActionPerformed(evt);
             }
         });
+        getContentPane().add(gender, new org.netbeans.lib.awtextra.AbsoluteConstraints(607, 607, 80, 40));
 
-        jLabel4.setText("Email:");
-
-        jLabel7.setText("Gender:");
-
-        jLabel5.setText("phone Number:");
-
-        jLabel6.setText("Bank Account Number:");
-
+        fName.setFont(new java.awt.Font("Tahoma", 0, 19)); // NOI18N
         fName.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 fNameActionPerformed(evt);
             }
         });
+        getContentPane().add(fName, new org.netbeans.lib.awtextra.AbsoluteConstraints(18, 526, 190, 41));
 
+        LName.setFont(new java.awt.Font("Tahoma", 0, 19)); // NOI18N
         LName.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 LNameActionPerformed(evt);
             }
         });
+        getContentPane().add(LName, new org.netbeans.lib.awtextra.AbsoluteConstraints(226, 526, 190, 41));
 
+        phone.setFont(new java.awt.Font("Tahoma", 0, 19)); // NOI18N
         phone.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 phoneActionPerformed(evt);
             }
         });
+        getContentPane().add(phone, new org.netbeans.lib.awtextra.AbsoluteConstraints(18, 608, 190, 41));
 
+        SSN.setFont(new java.awt.Font("Tahoma", 0, 19)); // NOI18N
         SSN.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 SSNActionPerformed(evt);
             }
         });
+        getContentPane().add(SSN, new org.netbeans.lib.awtextra.AbsoluteConstraints(642, 526, 190, 41));
 
-        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabel3.setText("Clients Information");
-
+        ClientsInformation.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         ClientsInformation.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -180,6 +173,8 @@ public class ModifyClient extends javax.swing.JFrame {
                 "First Name", "Last Name", "Gender", "Phone Number", "SSN", "Email", "Bank Account Number"
             }
         ));
+        ClientsInformation.setFillsViewportHeight(true);
+        ClientsInformation.setRowHeight(18);
         ClientsInformation.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 ClientsInformationMouseClicked(evt);
@@ -187,99 +182,27 @@ public class ModifyClient extends javax.swing.JFrame {
         });
         jScrollPane3.setViewportView(ClientsInformation);
 
+        getContentPane().add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(18, 210, 914, 224));
+
+        Interface.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaces/ModifyClient.png"))); // NOI18N
+        Interface.setText("jLabel8");
+        getContentPane().add(Interface, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+
         Modify.setText("Modify");
         Modify.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ModifyActionPerformed(evt);
             }
         });
+        getContentPane().add(Modify, new org.netbeans.lib.awtextra.AbsoluteConstraints(759, 619, 150, 60));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(37, 37, 37)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel7)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(gender, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(id, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(fName, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(SSN, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(LName, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(email, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jLabel6)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(iban, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(78, 78, 78)
-                                .addComponent(jLabel5)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(phone, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 0, Short.MAX_VALUE))))
-                    .addComponent(jLabel3)
-                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 741, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(347, 347, 347)
-                .addComponent(Modify)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(37, 37, 37)
-                .addComponent(jLabel3)
-                .addGap(56, 56, 56)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 88, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(39, 39, 39)
-                        .addComponent(id, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(phone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLabel5))
-                            .addComponent(LName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(email, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel6)
-                            .addComponent(iban, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel4)
-                            .addComponent(SSN, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(fName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(gender, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel7))
-                .addGap(37, 37, 37)
-                .addComponent(Modify)
-                .addGap(43, 43, 43))
-        );
+        back.setText("jLabel1");
+        back.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                backMouseClicked(evt);
+            }
+        });
+        getContentPane().add(back, new org.netbeans.lib.awtextra.AbsoluteConstraints(31, 40, 50, 60));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -338,58 +261,73 @@ public class ModifyClient extends javax.swing.JFrame {
             // Check each text field value with our clients data on the array list
             // to modify just the values that the user changed it
             boolean changeFound = false;// to print massage to user 
-            if (!fName.getText().equals(Client.Clients.get(index).getFirstName())) {
-                // The method will only overwrite on previous value on the file
-                Client.ModifyClientInformationOnDB((index * 7) + 1, fName.getText());
-                // modify on arraylist
-                Client.Clients.get(index).setFirstName(fName.getText());
-                changeFound = true;
-            }
-            if (!LName.getText().equals(Client.Clients.get(index).getLastName())) {
-                Client.ModifyClientInformationOnDB((index * 7) + 2, LName.getText());
-                Client.Clients.get(index).setLastName(LName.getText());
-                changeFound = true;
-            }
-            if (!SSN.getText().equals(Client.Clients.get(index).getSSN())) {
-                Client.ModifyClientInformationOnDB((index * 7) + 3, SSN.getText());
-                Client.Clients.get(index).setSSN(SSN.getText());
-                changeFound = true;
-            }
-            if (!email.getText().equals(Client.Clients.get(index).getEmail())) {
-                Client.ModifyClientInformationOnDB((index * 7) + 4, email.getText());
-                Client.Clients.get(index).setEmail(email.getText());
-                changeFound = true;
-            }
-            if (!phone.getText().equals(Client.Clients.get(index).getPhone())) {
-                Client.ModifyClientInformationOnDB((index * 7) + 5, phone.getText());
-                Client.Clients.get(index).setPhone(phone.getText());
-                changeFound = true;
-            }
-            if (!iban.getText().equals(Client.Clients.get(index).getBankIBAN())) {
-                Client.ModifyClientInformationOnDB((index * 7) + 6, iban.getText());
-                Client.Clients.get(index).setBankIBAN(iban.getText());
-                changeFound = true;
-            }
-            if (gender.getSelectedItem().toString().charAt(0) != Client.Clients.get(index).getGender()){
-                Client.ModifyClientInformationOnDB((index * 7) + 7, gender.getSelectedItem().toString());
-                Client.Clients.get(index).setGender(gender.getSelectedItem().toString().charAt(0));
-                changeFound = true;
-            }
 
-            if (changeFound) {
-                JOptionPane.showMessageDialog(null, "Client Information has been Modified successfully");
-                TableContent();// to update table with changes
-            } 
-            if (!changeFound) {
-                JOptionPane.showMessageDialog(null, "You did not commit any modifications");
-            }
+            if (index == -1) {
+                // In case user press "Modify" button while user didn't choose client to Modify
+                JOptionPane.showConfirmDialog(null,
+                        "You Did Not Select Client to Modify",
+                        "Select Client", JOptionPane.DEFAULT_OPTION,
+                        JOptionPane.INFORMATION_MESSAGE);
+            } else {
+                if (!fName.getText().equals(Client.Clients.get(index).getFirstName())) {
+                    // The method will only overwrite on previous value on the file
+                    Client.ModifyClientInformationOnDB((index * 7) + 1, fName.getText());
+                    // modify on arraylist
+                    Client.Clients.get(index).setFirstName(fName.getText());
+                    changeFound = true;
+                }
+                if (!LName.getText().equals(Client.Clients.get(index).getLastName())) {
+                    Client.ModifyClientInformationOnDB((index * 7) + 2, LName.getText());
+                    Client.Clients.get(index).setLastName(LName.getText());
+                    changeFound = true;
+                }
+                if (!SSN.getText().equals(Client.Clients.get(index).getSSN())) {
+                    Client.ModifyClientInformationOnDB((index * 7) + 3, SSN.getText());
+                    Client.Clients.get(index).setSSN(SSN.getText());
+                    changeFound = true;
+                }
+                if (!email.getText().equals(Client.Clients.get(index).getEmail())) {
+                    Client.ModifyClientInformationOnDB((index * 7) + 4, email.getText());
+                    Client.Clients.get(index).setEmail(email.getText());
+                    changeFound = true;
+                }
+                if (!phone.getText().equals(Client.Clients.get(index).getPhone())) {
+                    Client.ModifyClientInformationOnDB((index * 7) + 5, phone.getText());
+                    Client.Clients.get(index).setPhone(phone.getText());
+                    changeFound = true;
+                }
+                if (!iban.getText().equals(Client.Clients.get(index).getBankIBAN())) {
+                    Client.ModifyClientInformationOnDB((index * 7) + 6, iban.getText());
+                    Client.Clients.get(index).setBankIBAN(iban.getText());
+                    changeFound = true;
+                }
+                if (gender.getSelectedItem().toString().charAt(0) != Client.Clients.get(index).getGender()) {
+                    Client.ModifyClientInformationOnDB((index * 7) + 7, gender.getSelectedItem().toString());
+                    Client.Clients.get(index).setGender(gender.getSelectedItem().toString().charAt(0));
+                    changeFound = true;
+                }
 
+                if (changeFound) {
+                    JOptionPane.showMessageDialog(null, "Client Information has been Modified successfully");
+                    TableContent();// to update table with changes
+                }
+                if (!changeFound) {
+                    JOptionPane.showMessageDialog(null, "You did not commit any modifications");
+                }
+            }
         } catch (IOException ex) {
             Logger.getLogger(ModifyClient.class.getName()).log(Level.SEVERE, null, ex);
         }
 
 
     }//GEN-LAST:event_ModifyActionPerformed
+
+    private void backMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_backMouseClicked
+
+        new HomePage().setVisible(true);
+        this.dispose();
+
+    }//GEN-LAST:event_backMouseClicked
 
     /**
      * @param args the command line arguments
@@ -434,21 +372,15 @@ public class ModifyClient extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTable ClientsInformation;
     private javax.swing.JTable ClientsInformation1;
+    private javax.swing.JLabel Interface;
     private javax.swing.JTextField LName;
     private javax.swing.JButton Modify;
     private javax.swing.JTextField SSN;
+    private javax.swing.JLabel back;
     private javax.swing.JTextField email;
     private javax.swing.JTextField fName;
     private javax.swing.JComboBox gender;
     private javax.swing.JTextField iban;
-    private javax.swing.JLabel id;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTextField phone;
     // End of variables declaration//GEN-END:variables
