@@ -24,7 +24,7 @@ public class Client {
     private String Phone;
     private String BankIBAN;
     private char Gender;
-    public static ArrayList<Client> Clients = new ArrayList<>();
+    private static ArrayList<Client> Clients = new ArrayList<>();
     private static File ClientFile = new File("ClientsFile.txt");
 
     public Client(String FirstName, String LastName, String SSN, String Email, String Phone, String BankIBAN, char Gender) {
@@ -109,6 +109,7 @@ public class Client {
 
     public static void AddClient(Client newClient) throws FileNotFoundException, IOException {
 
+        Clients.add(newClient);
         // Appened new information on existing file
         try (FileWriter ClientsFile = new FileWriter("ClientsFile.txt", true);
                 // BufferedWriter and Printer declaration
@@ -142,9 +143,60 @@ public class Client {
         List<String> lines = Files.readAllLines(ClientFile.toPath(), StandardCharsets.UTF_8);
         // Delete lines that contains client information 
         // each client has 7 lines
-        lines.subList(ClientIndexNumber, ClientIndexNumber+7).clear();
+        lines.subList(ClientIndexNumber, ClientIndexNumber + 7).clear();
         // set changes to file 
         Files.write(ClientFile.toPath(), lines, StandardCharsets.UTF_8);
     }
+
+    public static String GenerateTransactionsReport() throws FileNotFoundException {
+        String Report = "";
+
+        Report += "=============================================================================\n";
+        Report += "------------------------------ R & J LAW FIRM -------------------------------\n";
+        Report += "=============================================================================\n\n";
+        Report += "------------------------------- CLIENTS REPORT ------------------------------\n";
+        java.util.Date date = new java.util.Date();
+        Report += "\n    Date :  " + date + "          \n";
+        Report += "=============================================================================\n";
+
+        // fill clients arraylist
+        Client.ReadInformations();
+        for (int i = 0; i < Clients.size(); i++) {
+            Report += "----- CLIENT ( " + (i + 1) + " ) ----------------------------------------------------------\n";
+
+            Report += "       Full name: " + Clients.get(i).getFirstName() + " " + Clients.get(i).getLastName() + "\n";
+            Report += "       Gender:    ";
+
+            if (Clients.get(i).getGender() == 'F') {
+                Report += "Female ";
+            } else {
+                Report += "Male ";
+            }
+            Report += "            Phonenumber: " + Clients.get(i).getPhone() + "\n";
+            Report += "       SSN:       " + Clients.get(i).getSSN()
+                    + "            Email:       " + Clients.get(i).getEmail() + "\n";
+            Report += "       BankIBAN   " + Clients.get(i).getBankIBAN() + "\n";
+            Report += "=============================================================================\n";
+        }
+
+        Report += "\n                             TOTAL CLIENTS  :  " + (Clients.size()) + "\n";
+
+        Report += "\n------------------- CLIENTS REPORT GENERATED SUCCESSFULLY -------------------\n";
+        Report += "=============================================================================\n";
+
+        return Report;
+
+    }
+
+    public static ArrayList<Client> getClients() {
+        return Clients;
+    }
+
+    @Override
+    public String toString() {
+        return super.toString(); //To change body of generated methods, choose Tools | Templates.
+    }
+    
+    
 
 }

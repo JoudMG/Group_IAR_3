@@ -1,4 +1,3 @@
-//package AhmadClassCPIT380;
 package RandJLawFirm;
 
 import javax.swing.JFileChooser;

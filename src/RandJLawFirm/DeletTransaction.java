@@ -44,15 +44,15 @@ public class DeletTransaction extends javax.swing.JFrame {
         // fill clients arraylist
         Transaction.ReadTranInformations();
         // insert clients information into the table 
-        for (int i = 0; i < Transaction.transactions.size(); i++) {
+        for (int i = 0; i < Transaction.getTransactions().size(); i++) {
             Vector row = new Vector();
 
-            row.add(Transaction.transactions.get(i).getCaseNumber());
-            row.add(Transaction.transactions.get(i).getCaseTitle());
+            row.add(Transaction.getTransactions().get(i).getCaseNumber());
+            row.add(Transaction.getTransactions().get(i).getCaseTitle());
             CaseFile = new File(Transaction.getTransactions().get(i).getCaseDoc());
             row.add(CaseFile.getName());
 
-            row.add(Transaction.transactions.get(i).getStatus());
+            row.add(Transaction.getTransactions().get(i).getStatus());
 
             model.addRow(row);
         }
@@ -183,8 +183,8 @@ public class DeletTransaction extends javax.swing.JFrame {
                         JOptionPane.INFORMATION_MESSAGE);
             } else {
                 int choice = JOptionPane.showConfirmDialog(null,
-                        "Are you Sure You Want to Delete " + "Case No " + Transaction.transactions.get(index).getCaseNumber() + "  Case Title "
-                        + Transaction.transactions.get(index).getCaseTitle() + " ?",
+                        "Are you Sure You Want to Delete " + "Case No " + Transaction.getTransactions().get(index).getCaseNumber() + "  Case Title "
+                        + Transaction.getTransactions().get(index).getCaseTitle() + " ?",
                         "Confirm Case Deletion", JOptionPane.YES_NO_OPTION,
                         JOptionPane.ERROR_MESSAGE);
 
@@ -192,7 +192,7 @@ public class DeletTransaction extends javax.swing.JFrame {
                     // delete from the file "Our Database"
                     Transaction.DeleteTrans(index * 4);
                     // delete from the arraylist
-                    Transaction.transactions.remove(index);
+                    Transaction.getTransactions().remove(index);
                     // set all things back
                     index = -1;
                     TableContent();

@@ -12,7 +12,7 @@ import java.util.Properties;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
-import static jdk.nashorn.internal.objects.NativeRegExp.source;
+//import static jdk.nashorn.internal.objects.NativeRegExp.source;
 import java.awt.Desktop;
 import java.io.IOException;
 import java.util.logging.Level;
@@ -39,68 +39,30 @@ public class AddTransaction extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jPanel2 = new javax.swing.JPanel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
+        FileNameLabel = new javax.swing.JLabel();
         caseNum = new javax.swing.JTextField();
         Status = new javax.swing.JTextField();
         caseTitle = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
         Browse = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
-        FileNameLabel = new javax.swing.JLabel();
+        Add = new javax.swing.JButton();
+        back = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(500, 500));
+        setPreferredSize(new java.awt.Dimension(970, 740));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
-        jLabel1.setText("Case Number:");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 130, -1, -1));
+        FileNameLabel.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        FileNameLabel.setForeground(new java.awt.Color(204, 204, 204));
+        FileNameLabel.setText("Add Attachment....");
+        getContentPane().add(FileNameLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 520, 380, 50));
+        getContentPane().add(caseNum, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 210, 330, 60));
+        getContentPane().add(Status, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 310, 330, 60));
+        getContentPane().add(caseTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 410, 330, 60));
 
-        jLabel2.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
-        jLabel2.setText("case Title:");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 180, -1, -1));
-
-        jPanel2.setBackground(new java.awt.Color(236, 236, 236));
-        jPanel2.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jPanel2.setPreferredSize(new java.awt.Dimension(600, 100));
-
-        jLabel3.setFont(new java.awt.Font("Times New Roman", 1, 36)); // NOI18N
-        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel3.setText("Add New Transaction");
-
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(111, Short.MAX_VALUE)
-                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 363, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(92, 92, 92))
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 46, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-
-        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 570, 82));
-
-        jLabel4.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
-        jLabel4.setText("case document:");
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 260, -1, -1));
-
-        jLabel5.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
-        jLabel5.setText("Status:");
-        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 350, -1, -1));
-        getContentPane().add(caseNum, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 130, 136, -1));
-        getContentPane().add(Status, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 350, 136, -1));
-        getContentPane().add(caseTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 180, 136, -1));
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaces/addTransaction.png"))); // NOI18N
+        jLabel2.setText("jLabel2");
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 950, -1));
 
         Browse.setBackground(new java.awt.Color(204, 204, 204));
         Browse.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
@@ -110,21 +72,24 @@ public class AddTransaction extends javax.swing.JFrame {
                 BrowseActionPerformed(evt);
             }
         });
-        getContentPane().add(Browse, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 300, -1, 40));
+        getContentPane().add(Browse, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 530, 190, 50));
 
-        jButton1.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
-        jButton1.setText("add");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        Add.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
+        Add.setText("add");
+        Add.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                AddActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(184, 401, 92, 45));
+        getContentPane().add(Add, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 610, 330, 50));
 
-        FileNameLabel.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        FileNameLabel.setForeground(new java.awt.Color(153, 153, 153));
-        FileNameLabel.setText("Add Attatchment....");
-        getContentPane().add(FileNameLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 260, -1, 30));
+        back.setText("jLabel1");
+        back.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                backMouseClicked(evt);
+            }
+        });
+        getContentPane().add(back, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 40, -1, 70));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -145,7 +110,7 @@ public class AddTransaction extends javax.swing.JFrame {
 
     }//GEN-LAST:event_BrowseActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void AddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddActionPerformed
         try {
             
             if (caseNum.getText().isEmpty() || caseTitle.getText().isEmpty()
@@ -162,7 +127,12 @@ public class AddTransaction extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, ex.toString());
         }
 
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_AddActionPerformed
+
+    private void backMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_backMouseClicked
+        new HomePage().setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_backMouseClicked
 
     /**
      * @param args the command line arguments
@@ -201,17 +171,13 @@ public class AddTransaction extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton Add;
     private javax.swing.JButton Browse;
     private javax.swing.JLabel FileNameLabel;
     private javax.swing.JTextField Status;
+    private javax.swing.JLabel back;
     private javax.swing.JTextField caseNum;
     private javax.swing.JTextField caseTitle;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JPanel jPanel2;
     // End of variables declaration//GEN-END:variables
 }

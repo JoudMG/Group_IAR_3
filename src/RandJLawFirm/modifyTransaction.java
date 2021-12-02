@@ -23,10 +23,10 @@ import javax.swing.table.TableModel;
  *
  * @author sania
  */
-public class modifyTransaction extends javax.swing.JFrame {
+public class ModifyTransaction extends javax.swing.JFrame {
 
     /**
-     * Creates new form modifyTransaction
+     * Creates new form ModifyTransaction
      */
     File CaseFile;
     int index;
@@ -63,7 +63,7 @@ public class modifyTransaction extends javax.swing.JFrame {
         }
     }
 
-    public modifyTransaction() throws FileNotFoundException {
+    public ModifyTransaction() throws FileNotFoundException {
         initComponents();
         TableContent();
     }
@@ -131,7 +131,7 @@ public class modifyTransaction extends javax.swing.JFrame {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, 52, Short.MAX_VALUE)
+                .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, 46, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -274,29 +274,29 @@ public class modifyTransaction extends javax.swing.JFrame {
                 // The method will only overwrite on previous value on the file
                 Transaction.ModifyTrans((index * TransactionAttributes) + 1, caseNum.getText());
                 // modify on arraylist
-                Transaction.transactions.get(index).setCaseNumber(caseNum.getText());
+                Transaction.getTransactions().get(index).setCaseNumber(caseNum.getText());
                 changeFound = true;
 
             }
-            if (!caseTitle.getText().equals(Transaction.transactions.get(index).getCaseTitle())) {
+            if (!caseTitle.getText().equals(Transaction.getTransactions().get(index).getCaseTitle())) {
 
                 Transaction.ModifyTrans((index * TransactionAttributes) + 2, caseTitle.getText());
 
-                Transaction.transactions.get(index).setCaseTitle(caseTitle.getText());
+                Transaction.getTransactions().get(index).setCaseTitle(caseTitle.getText());
                 changeFound = true;
             }
-            if (!Status.getText().equals(Transaction.transactions.get(index).getStatus())) {
+            if (!Status.getText().equals(Transaction.getTransactions().get(index).getStatus())) {
 
                 Transaction.ModifyTrans((index * TransactionAttributes) + 4, Status.getText());
 
-                Transaction.transactions.get(index).setStatus(Status.getText());
+                Transaction.getTransactions().get(index).setStatus(Status.getText());
                 changeFound = true;
             }
-            if (!("Transactions\\" + CaseDoc.getText()).equals(Transaction.transactions.get(index).getCaseDoc())) {
+            if (!("Transactions\\" + CaseDoc.getText()).equals(Transaction.getTransactions().get(index).getCaseDoc())) {
 
                 Transaction.ModifyTrans((index * TransactionAttributes) + 3, "Transactions\\" + caseDoc.getName());
 
-                Transaction.transactions.get(index).setCaseDoc("Transactions\\" + caseDoc.getName());
+                Transaction.getTransactions().get(index).setCaseDoc("Transactions\\" + caseDoc.getName());
                 changeFound = true;
             }
             if (changeFound) {
@@ -309,7 +309,7 @@ public class modifyTransaction extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(null, "You did not commit any modifications");
             }
         } catch (IOException ex) {
-            Logger.getLogger(modifyTransaction.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ModifyTransaction.class.getName()).log(Level.SEVERE, null, ex);
         }
 
 
@@ -348,7 +348,7 @@ public class modifyTransaction extends javax.swing.JFrame {
         try {
             Files.copy(caseDoc.toPath(), currentDirFile.toPath(), REPLACE_EXISTING);
         } catch (IOException ex) {
-            Logger.getLogger(modifyTransaction.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ModifyTransaction.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_OpenFile1ActionPerformed
 
@@ -373,23 +373,24 @@ public class modifyTransaction extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(modifyTransaction.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ModifyTransaction.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(modifyTransaction.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ModifyTransaction.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(modifyTransaction.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ModifyTransaction.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(modifyTransaction.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ModifyTransaction.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 try {
-                    new modifyTransaction().setVisible(true);
+                    new ModifyTransaction().setVisible(true);
                 } catch (FileNotFoundException ex) {
-                    Logger.getLogger(modifyTransaction.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(ModifyTransaction.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
         });
