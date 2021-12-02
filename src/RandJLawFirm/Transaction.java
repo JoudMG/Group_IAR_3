@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package RandJLawFirm;
 
 import java.io.BufferedWriter;
@@ -17,19 +12,18 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-/**
- *
- * @author HP
- */
 public class Transaction {
 
     private String caseNumber;
     private String caseTitle;
     private String caseDoc;
     private String status;
-    public static int FoundCaseIndex;
-    static ArrayList<Transaction> transactions = new ArrayList<>();
+    private static ArrayList<Transaction> transactions;
     private static File TransactionFile = new File("TransactionFile.txt");
+
+    // This Attribute is ONLY Used in Runtime To Save Found Case Index By SearchCase Class
+    // So we Can Share This Value with Other Classes
+    private static int FoundCaseIndex;
 
     public Transaction(String caseNumber, String caseTitle, String caseDoc, String status) {
         this.caseNumber = caseNumber;
@@ -39,7 +33,7 @@ public class Transaction {
     }
 
     public static void ReadTranInformations() throws FileNotFoundException {
-
+        transactions = new ArrayList<>();
         if (transactions.isEmpty() && TransactionFile.exists()) {
             Scanner scan = new Scanner(TransactionFile);
             while (scan.hasNextLine()) {
@@ -48,39 +42,35 @@ public class Transaction {
         }
     }
 
-    public static void AddTrans(Transaction newTrans) throws FileNotFoundException, IOException {
-
-        try (FileWriter transFile = new FileWriter("TransactionFile.txt", true);
+    public static void AddTransaction(String file, Transaction newTrans) throws FileNotFoundException, IOException {
+        try (FileWriter transFile = new FileWriter(file, true);
                 BufferedWriter bufferWriter = new BufferedWriter(transFile);
                 PrintWriter printer = new PrintWriter(bufferWriter)) {
-
             printer.println(newTrans.getCaseNumber());
             printer.println(newTrans.getCaseTitle());
             printer.println(newTrans.getCaseDoc());
             printer.println(newTrans.getStatus());
         } catch (IOException e) {
-
         }
     }
 
-    
-     public static void ModifyTrans(int lineNumber, String data) throws FileNotFoundException, IOException {
+    public static void ModifyTransaction(int lineNumber, String data) throws FileNotFoundException, IOException {
 
-       // get all file content as lines into a list of string
+        // get all file content as lines into a list of string
         List<String> lines = Files.readAllLines(TransactionFile.toPath(), StandardCharsets.UTF_8);
         // modify specific line with passed data (new value)
         lines.set(lineNumber - 1, data);
         // set changes to file 
         Files.write(TransactionFile.toPath(), lines, StandardCharsets.UTF_8);
 
-        }
+    }
 
-     public static void DeleteTrans(int TransactionIndexNumber) throws IOException {
+    public static void DeleteTrans(int TransactionIndexNumber) throws IOException {
         // get all file content as lines into a list of string
         List<String> lines = Files.readAllLines(TransactionFile.toPath(), StandardCharsets.UTF_8);
         // Delete lines that contains client information 
         // each client has 4 lines
-        lines.subList(TransactionIndexNumber, TransactionIndexNumber+4).clear();
+        lines.subList(TransactionIndexNumber, TransactionIndexNumber + 4).clear();
         // set changes to file 
         Files.write(TransactionFile.toPath(), lines, StandardCharsets.UTF_8);
     }
@@ -100,8 +90,7 @@ public class Transaction {
     public void setStatus(String status) {
         this.status = status;
     }
-    
-     
+
     public String getCaseNumber() {
         return caseNumber;
     }
@@ -126,8 +115,58 @@ public class Transaction {
         return TransactionFile;
     }
 
-    public static int SearchTransactio(String CaseNumber) {
+    public static Boolean isCaseNumberVaild(String ID) {
+        if (ID == null) {
+            return false;
+        }
+        try {
+            Integer id = Integer.parseInt(ID);
+        } catch (NumberFormatException nfe) {
+            return false;
+        }
+        return true;
+    }
 
+    public static int getFoundCaseIndex() {
+        return FoundCaseIndex;
+    }
+
+    public static void setFoundCaseIndex(int FoundCaseIndex) {
+        Transaction.FoundCaseIndex = FoundCaseIndex;
+    }
+
+    public static String GenerateTransactionsReport() throws FileNotFoundException {
+        String Report = "";
+
+        Report += "=============================================================================\n";
+        Report += "------------------------------ R & J LAW FIRM -------------------------------\n";
+        Report += "=============================================================================\n\n";
+        Report += "---------------------------- TRANSACTIONS REPORT ----------------------------\n";
+        java.util.Date date = new java.util.Date();
+        Report += "\n    Date :  " + date + "          \n";
+        Report += "=============================================================================\n";
+
+        // fill arraylist
+        Transaction.ReadTranInformations();
+        for (int i = 0; i < Transaction.getTransactions().size(); i++) {
+            Report += "----- TRANSACTION ( " + (i + 1) + " ) -----------------------------------------------------\n";
+            Report += "      Case Number:             " + Transaction.getTransactions().get(i).getCaseNumber()
+                    + "            Case Title:   " + Transaction.getTransactions().get(i).getCaseTitle() + "\n";
+            File CaseFile = new File(Transaction.getTransactions().get(i).getCaseDoc());
+            Report += "      Case Document:       " + CaseFile.getName()
+                    + "\n      Case Status:    " + Transaction.getTransactions().get(i).getStatus() + "\n";
+            Report += "=============================================================================\n";
+        }
+        Report += "\n                             TOTAL TRANSACTIONS  :  " + (transactions.size()) + "\n";
+
+        Report += "\n----------------- TRANSACTIONS REPORT GENERATED SUCCESSFULLY-----------------\n";
+        Report += "=============================================================================\n";
+
+        return Report;
+
+    }
+
+    public static int SearchTransaction(String CaseNumber) {
         for (int i = 0; i < transactions.size(); i++) {
             if (transactions.get(i).getCaseNumber().equals(CaseNumber)) {
                 FoundCaseIndex = i;
@@ -135,6 +174,11 @@ public class Transaction {
             }
         }
         return -1;
-
     }
+
+    @Override
+    public String toString() {
+        return super.toString(); //To change body of generated methods, choose Tools | Templates.
+    }
+
 }

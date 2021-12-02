@@ -9,50 +9,38 @@ import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class User {
+public class User extends Employee {
 
-    public String ID;
-    public String password;
-    public String email;
-    public static ArrayList<User> UserDb = new ArrayList<>();
-    public static File database = new File("UserDataBase.txt");
+    private String password;
+    private String email;
+    private static ArrayList<User> UserDb = new ArrayList<>();
+    private static File database = new File("UserDataBase.txt");
+    private static String CurrentUserID;
 
     public User(String ID, String password, String email) {
-        this.ID = ID;
+        super(ID);
         this.password = password;
         this.email = email;
     }
 
     public User(String ID, String password) {
-        this.ID = ID;
+        super(ID);
         this.password = password;
     }
 
-    public static void ReadInformations() throws FileNotFoundException {
-
-        if (UserDb.isEmpty()) {// if not empty, thats mean it alredy enter this method
-            File UserFile = new File("UserDataBase.txt");
-            Scanner scan = new Scanner(UserFile);
+    
+    
+    static void ReadInformations() throws FileNotFoundException {
+        if (UserDb.isEmpty()) {
+            Scanner scan = new Scanner(database);
             while (scan.hasNextLine()) {
-                // add existing application users to arraylist
                 UserDb.add(new User(scan.nextLine(), scan.nextLine(), scan.nextLine()));
             }
         }
     }
 
-    public String getID() {
-        return ID;
-    }
 
-    public String getEmail() {
-        return email;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void RegisterUser(User newUser) throws FileNotFoundException, IOException {
+    public static void RegisterUser(User newUser) throws FileNotFoundException, IOException {
 
         // Appened new information on existing file
         try (FileWriter UsersFile = new FileWriter("UserDataBase.txt", true);
@@ -63,6 +51,7 @@ public class User {
             printer.println(newUser.getID());
             printer.println(newUser.getPassword());
             printer.println(newUser.getEmail());
+            CurrentUserID = newUser.getID();
 
         } catch (IOException e) {
 
@@ -70,7 +59,7 @@ public class User {
 
     }
 
-    public Boolean isIDExist(String ID) {
+    public static Boolean isIDExist(String ID) {
 
         for (int i = 0; i < UserDb.size(); i++) {
             if (UserDb.get(i).getID().equals(ID)) {
@@ -87,15 +76,106 @@ public class User {
         for (int i = 0; i < User.UserDb.size(); i++) {
             if (User.UserDb.get(i).getID().equals(ID) && User.UserDb.get(i).getPassword().equals(Password)) {
                 Found = true;
+                CurrentUserID = ID;
                 break;
             }
         }
-    return Found;}
+        return Found;
+    }
 
+
+    public static String GenerateUserReport() throws FileNotFoundException {
+        String Report = "";
+
+        Report += "=============================================================================\n";
+        Report += "------------------------------ R & J LAW FIRM -------------------------------\n";
+        Report += "=============================================================================\n\n";
+        Report += "------------------------------- USER REPORT ---------------------------------\n";
+        java.util.Date date = new java.util.Date();
+        Report += "\n    Date :  " + date + "          \n";
+        Report += "=============================================================================\n";
+
+        // fill  arraylist
+        User.ReadInformations();
+        Employee CurrentEmployee = null;
+        for (int i = 0; i < User.UserDb.size(); i++) {
+            for (int j = 0; j < Employee.getEmployees().size(); j++) {
+                if (Employee.getEmployees().get(j).getID().equals(User.UserDb.get(i).getID())) {
+                    CurrentEmployee = Employee.getEmployees().get(j);
+                    break;
+                }
+            }
+            Report += "----- USER ( " + (i + 1) + " ) ------------------------------------------------------------\n";
+            Report += "      ID:   " + User.UserDb.get(i).getID() + "                  Email:   " + User.UserDb.get(i).email + "\n";
+            Report += "      First Name:   " + CurrentEmployee.getFirstName() + "\n";
+            Report += "      Last Name:    " + CurrentEmployee.getLastName() + "\n";
+            Report += "      Phone Number: " + CurrentEmployee.getPhone() + "\n";
+            if (CurrentEmployee.getIsManager()) {
+                Report += "      Position:     " + "Manager\n";
+            } else {
+                Report += "      Position:     " + "Employee\n";
+            }
+            Report += "=============================================================================\n";
+        }
+        
+        
+                Report += "\n                                TOTAL USERS  :  " + (UserDb.size()) + "\n";
+
+        Report += "\n-------------------- USERS REPORT GENERATED SUCCESSFULLY---------------------\n";
+        Report += "=============================================================================\n";
+
+
+        return Report;
+    }
+    
+    public static String getCurrentUserID() {
+        return CurrentUserID;
+    }
+     public String getID() {
+        return super.getID();
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public static ArrayList<User> getUserDb() {
+        return UserDb;
+    }
+
+    public static File getDatabase() {
+        return database;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public static void setUserDb(ArrayList<User> UserDb) {
+        User.UserDb = UserDb;
+    }
+
+    public static void setDatabase(File database) {
+        User.database = database;
+    }
+
+    public static void setCurrentUserID(String CurrentUserID) {
+        User.CurrentUserID = CurrentUserID;
+    }
+    
     @Override
     public String toString() {
         return super.toString(); //To change body of generated methods, choose Tools | Templates.
     }
-
     
+    
+
 }

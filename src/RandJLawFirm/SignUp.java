@@ -12,6 +12,7 @@ import javax.swing.JOptionPane;
 public class SignUp extends javax.swing.JFrame {
 
     public SignUp() {
+        Employee.AllEmployees();
         initComponents();
     }
 
@@ -40,14 +41,18 @@ public class SignUp extends javax.swing.JFrame {
         setPreferredSize(new java.awt.Dimension(970, 760));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        forPass.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         forPass.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 forPassActionPerformed(evt);
             }
         });
         getContentPane().add(forPass, new org.netbeans.lib.awtextra.AbsoluteConstraints(319, 318, 312, 49));
+
+        forConfirmPass.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         getContentPane().add(forConfirmPass, new org.netbeans.lib.awtextra.AbsoluteConstraints(319, 408, 312, 49));
 
+        forEmail.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         forEmail.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 forEmailActionPerformed(evt);
@@ -55,6 +60,7 @@ public class SignUp extends javax.swing.JFrame {
         });
         getContentPane().add(forEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(319, 499, 312, 49));
 
+        forID.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         forID.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 forIDActionPerformed(evt);
@@ -106,19 +112,22 @@ public class SignUp extends javax.swing.JFrame {
         Password = forPass.getText();
         confirm_Password = forConfirmPass.getText();
         email = forEmail.getText();
+        Boolean isEmployee = Employee.isEmployeeID(UserID);
         try {
             // check what user enter
             if (UserID.isEmpty() || Password.isEmpty() || confirm_Password.isEmpty() || email.isEmpty()) {
                 JOptionPane.showMessageDialog(null, "Please fill all the feilds ");
-            } else {
+            }else if (!isEmployee) {// Check if Entered Id Exist in Employees Data
+                JOptionPane.showMessageDialog(null, "Invalid ID, No Employee ID Match The ID You Entered");
+            }else {
                 // check password
                 if (!Password.equals(confirm_Password)) {
                     JOptionPane.showMessageDialog(null, "The password doesn't match the confirm passweord");
                 }
                 // check email
-                if (!email.contains("@") && !email.contains(".")) {
+                else if (!email.contains("@") && !email.contains(".")) {
                     JOptionPane.showMessageDialog(null, "The email is not correct");
-                } else { // else if all entered data is correct 
+                }else { // else if all entered data is correct 
                     // create an object for the user to register
                     User newUser = new User(UserID, Password, email);
                     // read all informations of application users from the User File

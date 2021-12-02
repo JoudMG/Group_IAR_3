@@ -7,8 +7,10 @@ package RandJLawFirm;
 
 import java.awt.Desktop;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class ViewCaseDetails extends javax.swing.JFrame {
 
@@ -16,11 +18,11 @@ public class ViewCaseDetails extends javax.swing.JFrame {
 
     public ViewCaseDetails() {
         initComponents();
-        caseNum.setText(Transaction.getTransactions().get(Transaction.FoundCaseIndex).getCaseNumber());
-        caseTitle1.setText(Transaction.getTransactions().get(Transaction.FoundCaseIndex).getCaseTitle());
-        CaseFile = new File(Transaction.getTransactions().get(Transaction.FoundCaseIndex).getCaseDoc());
+        caseNum.setText(Transaction.getTransactions().get(Transaction.getFoundCaseIndex()).getCaseNumber());
+        caseTitle1.setText(Transaction.getTransactions().get(Transaction.getFoundCaseIndex()).getCaseTitle());
+        CaseFile = new File(Transaction.getTransactions().get(Transaction.getFoundCaseIndex()).getCaseDoc());
         caseTitle.setText(CaseFile.getName());
-        Status.setText(Transaction.getTransactions().get(Transaction.FoundCaseIndex).getStatus());
+        Status.setText(Transaction.getTransactions().get(Transaction.getFoundCaseIndex()).getStatus());
     }
 
     /**
@@ -32,43 +34,42 @@ public class ViewCaseDetails extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
         caseNum = new javax.swing.JTextField();
         Status = new javax.swing.JTextField();
         caseTitle = new javax.swing.JTextField();
+        caseTitle1 = new javax.swing.JTextField();
+        jLabel6 = new javax.swing.JLabel();
         OpenFile = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        caseTitle1 = new javax.swing.JTextField();
-        jPanel2 = new javax.swing.JPanel();
-        jLabel3 = new javax.swing.JLabel();
+        back = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(700, 594));
+        setPreferredSize(new java.awt.Dimension(965, 740));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel4.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
-        jLabel4.setText("case document:");
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 290, -1, -1));
-
-        jLabel5.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
-        jLabel5.setText("Status:");
-        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 350, -1, -1));
-
         caseNum.setEditable(false);
-        getContentPane().add(caseNum, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 140, 136, -1));
+        caseNum.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
+        getContentPane().add(caseNum, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 256, 250, 50));
 
         Status.setEditable(false);
-        getContentPane().add(Status, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 350, 136, -1));
+        Status.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
+        getContentPane().add(Status, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 460, 250, 50));
 
         caseTitle.setEditable(false);
+        caseTitle.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
         caseTitle.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 caseTitleActionPerformed(evt);
             }
         });
-        getContentPane().add(caseTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 296, 136, 30));
+        getContentPane().add(caseTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 390, 250, 50));
+
+        caseTitle1.setEditable(false);
+        caseTitle1.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
+        getContentPane().add(caseTitle1, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 320, 250, 60));
+
+        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaces/viewCase.png"))); // NOI18N
+        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 940, -1));
 
         OpenFile.setBackground(new java.awt.Color(204, 204, 204));
         OpenFile.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
@@ -78,45 +79,18 @@ public class ViewCaseDetails extends javax.swing.JFrame {
                 OpenFileActionPerformed(evt);
             }
         });
-        getContentPane().add(OpenFile, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 290, 100, 40));
+        getContentPane().add(OpenFile, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 400, 140, 40));
 
-        jLabel1.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
-        jLabel1.setText("Case Number:");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 140, -1, -1));
+        jLabel1.setText("jLabel1");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 50, -1, 50));
 
-        jLabel2.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
-        jLabel2.setText("case Title:");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 200, -1, -1));
-
-        caseTitle1.setEditable(false);
-        getContentPane().add(caseTitle1, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 200, 136, -1));
-
-        jPanel2.setBackground(new java.awt.Color(236, 236, 236));
-        jPanel2.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jPanel2.setPreferredSize(new java.awt.Dimension(600, 100));
-
-        jLabel3.setFont(new java.awt.Font("Times New Roman", 1, 36)); // NOI18N
-        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel3.setText("View Case Details");
-
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(172, Short.MAX_VALUE)
-                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 363, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(161, 161, 161))
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 64, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-
-        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 700, -1));
+        back.setText("jLabel2");
+        back.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                backMouseClicked(evt);
+            }
+        });
+        getContentPane().add(back, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 30, -1, 70));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -134,6 +108,15 @@ public class ViewCaseDetails extends javax.swing.JFrame {
     private void caseTitleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_caseTitleActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_caseTitleActionPerformed
+
+    private void backMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_backMouseClicked
+        try {
+            new SearchCase().setVisible(true);
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(ViewCaseDetails.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        this.dispose();
+    }//GEN-LAST:event_backMouseClicked
 
     /**
      * @param args the command line arguments
@@ -173,14 +156,11 @@ public class ViewCaseDetails extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton OpenFile;
     private javax.swing.JTextField Status;
+    private javax.swing.JLabel back;
     private javax.swing.JTextField caseNum;
     private javax.swing.JTextField caseTitle;
     private javax.swing.JTextField caseTitle1;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JPanel jPanel2;
+    private javax.swing.JLabel jLabel6;
     // End of variables declaration//GEN-END:variables
 }

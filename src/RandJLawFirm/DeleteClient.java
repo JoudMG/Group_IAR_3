@@ -44,15 +44,15 @@ public class DeleteClient extends javax.swing.JFrame {
         // fill clients arraylist
         Client.ReadInformations();
         // insert clients information into the table 
-        for (int i = 0; i < Client.Clients.size(); i++) {
+        for (int i = 0; i < Client.getClients().size(); i++) {
             Vector row = new Vector();
-            row.add(Client.Clients.get(i).getFirstName());
-            row.add(Client.Clients.get(i).getLastName());
-            row.add(Client.Clients.get(i).getGender());
-            row.add(Client.Clients.get(i).getPhone());
-            row.add(Client.Clients.get(i).getSSN());
-            row.add(Client.Clients.get(i).getEmail());
-            row.add(Client.Clients.get(i).getBankIBAN());
+            row.add(Client.getClients().get(i).getFirstName());
+            row.add(Client.getClients().get(i).getLastName());
+            row.add(Client.getClients().get(i).getGender());
+            row.add(Client.getClients().get(i).getPhone());
+            row.add(Client.getClients().get(i).getSSN());
+            row.add(Client.getClients().get(i).getEmail());
+            row.add(Client.getClients().get(i).getBankIBAN());
             ClientsTable.addRow(row);
         }
         
@@ -140,8 +140,8 @@ public class DeleteClient extends javax.swing.JFrame {
                         JOptionPane.INFORMATION_MESSAGE);
             } else {
                 int choice = JOptionPane.showConfirmDialog(null,
-                        "Are you Sure You Want to Delete " + Client.Clients.get(index).getFirstName() + " "
-                        + Client.Clients.get(index).getLastName() + " ?",
+                        "Are you Sure You Want to Delete " + Client.getClients().get(index).getFirstName() + " "
+                        + Client.getClients().get(index).getLastName() + " ?",
                         "Confirm Client Deletion", JOptionPane.YES_NO_OPTION,
                         JOptionPane.ERROR_MESSAGE);
 
@@ -149,7 +149,7 @@ public class DeleteClient extends javax.swing.JFrame {
                     // delete from the file "Our Database"
                     Client.DeleteClientInformationOnDB(index * 7);
                     // delete from the arraylist
-                    Client.Clients.remove(index);
+                    Client.getClients().remove(index);
                     // set all things back
                     index = -1;
                     TableContent();

@@ -41,16 +41,16 @@ public class ModifyClient extends javax.swing.JFrame {
         // fill clients arraylist
         Client.ReadInformations();
         // insert clients information into the table 
-        for (int i = 0; i < Client.Clients.size(); i++) {
+        for (int i = 0; i < Client.getClients().size(); i++) {
             Vector row = new Vector();
 
-            row.add(Client.Clients.get(i).getFirstName());
-            row.add(Client.Clients.get(i).getLastName());
-            row.add(Client.Clients.get(i).getGender());
-            row.add(Client.Clients.get(i).getPhone());
-            row.add(Client.Clients.get(i).getSSN());
-            row.add(Client.Clients.get(i).getEmail());
-            row.add(Client.Clients.get(i).getBankIBAN());
+            row.add(Client.getClients().get(i).getFirstName());
+            row.add(Client.getClients().get(i).getLastName());
+            row.add(Client.getClients().get(i).getGender());
+            row.add(Client.getClients().get(i).getPhone());
+            row.add(Client.getClients().get(i).getSSN());
+            row.add(Client.getClients().get(i).getEmail());
+            row.add(Client.getClients().get(i).getBankIBAN());
             ClientsTable.addRow(row);
         }
 
@@ -244,13 +244,13 @@ public class ModifyClient extends javax.swing.JFrame {
 
         // ----------------------------------------------------------------
         // STEP 2 : show selected row on the text fields to user to modify 
-        fName.setText(Client.Clients.get(index).getFirstName());
-        LName.setText(Client.Clients.get(index).getLastName());
-        gender.setSelectedItem(Client.Clients.get(index).getGender() + "");
-        SSN.setText(Client.Clients.get(index).getSSN());
-        email.setText(Client.Clients.get(index).getEmail());
-        phone.setText(Client.Clients.get(index).getPhone());
-        iban.setText(Client.Clients.get(index).getBankIBAN());
+        fName.setText(Client.getClients().get(index).getFirstName());
+        LName.setText(Client.getClients().get(index).getLastName());
+        gender.setSelectedItem(Client.getClients().get(index).getGender() + "");
+        SSN.setText(Client.getClients().get(index).getSSN());
+        email.setText(Client.getClients().get(index).getEmail());
+        phone.setText(Client.getClients().get(index).getPhone());
+        iban.setText(Client.getClients().get(index).getBankIBAN());
 
 
     }//GEN-LAST:event_ClientsInformationMouseClicked
@@ -269,41 +269,41 @@ public class ModifyClient extends javax.swing.JFrame {
                         "Select Client", JOptionPane.DEFAULT_OPTION,
                         JOptionPane.INFORMATION_MESSAGE);
             } else {
-                if (!fName.getText().equals(Client.Clients.get(index).getFirstName())) {
+                if (!fName.getText().equals(Client.getClients().get(index).getFirstName())) {
                     // The method will only overwrite on previous value on the file
                     Client.ModifyClientInformationOnDB((index * 7) + 1, fName.getText());
                     // modify on arraylist
-                    Client.Clients.get(index).setFirstName(fName.getText());
+                    Client.getClients().get(index).setFirstName(fName.getText());
                     changeFound = true;
                 }
-                if (!LName.getText().equals(Client.Clients.get(index).getLastName())) {
+                if (!LName.getText().equals(Client.getClients().get(index).getLastName())) {
                     Client.ModifyClientInformationOnDB((index * 7) + 2, LName.getText());
-                    Client.Clients.get(index).setLastName(LName.getText());
+                    Client.getClients().get(index).setLastName(LName.getText());
                     changeFound = true;
                 }
-                if (!SSN.getText().equals(Client.Clients.get(index).getSSN())) {
+                if (!SSN.getText().equals(Client.getClients().get(index).getSSN())) {
                     Client.ModifyClientInformationOnDB((index * 7) + 3, SSN.getText());
-                    Client.Clients.get(index).setSSN(SSN.getText());
+                    Client.getClients().get(index).setSSN(SSN.getText());
                     changeFound = true;
                 }
-                if (!email.getText().equals(Client.Clients.get(index).getEmail())) {
+                if (!email.getText().equals(Client.getClients().get(index).getEmail())) {
                     Client.ModifyClientInformationOnDB((index * 7) + 4, email.getText());
-                    Client.Clients.get(index).setEmail(email.getText());
+                    Client.getClients().get(index).setEmail(email.getText());
                     changeFound = true;
                 }
-                if (!phone.getText().equals(Client.Clients.get(index).getPhone())) {
+                if (!phone.getText().equals(Client.getClients().get(index).getPhone())) {
                     Client.ModifyClientInformationOnDB((index * 7) + 5, phone.getText());
-                    Client.Clients.get(index).setPhone(phone.getText());
+                    Client.getClients().get(index).setPhone(phone.getText());
                     changeFound = true;
                 }
-                if (!iban.getText().equals(Client.Clients.get(index).getBankIBAN())) {
+                if (!iban.getText().equals(Client.getClients().get(index).getBankIBAN())) {
                     Client.ModifyClientInformationOnDB((index * 7) + 6, iban.getText());
-                    Client.Clients.get(index).setBankIBAN(iban.getText());
+                    Client.getClients().get(index).setBankIBAN(iban.getText());
                     changeFound = true;
                 }
-                if (gender.getSelectedItem().toString().charAt(0) != Client.Clients.get(index).getGender()) {
+                if (gender.getSelectedItem().toString().charAt(0) != Client.getClients().get(index).getGender()) {
                     Client.ModifyClientInformationOnDB((index * 7) + 7, gender.getSelectedItem().toString());
-                    Client.Clients.get(index).setGender(gender.getSelectedItem().toString().charAt(0));
+                    Client.getClients().get(index).setGender(gender.getSelectedItem().toString().charAt(0));
                     changeFound = true;
                 }
 
