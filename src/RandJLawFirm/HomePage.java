@@ -3,22 +3,19 @@ package RandJLawFirm;
 import java.io.FileNotFoundException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-/**
- *
- * @author iijoo
- */
 public class HomePage extends javax.swing.JFrame {
 
-    /**
-     * Creates new form EmployeeInterface
-     */
+    private Employee CurrentEmployee = null;
+
     public HomePage() {
+        Employee.AllEmployees();
+        for (int i = 0; i < Employee.getEmployees().size(); i++) {
+            if (Employee.getEmployees().get(i).getID().equals(User.getCurrentUserID())) {
+                CurrentEmployee = Employee.getEmployees().get(i);
+            }
+        }
         initComponents();
     }
 
@@ -37,6 +34,12 @@ public class HomePage extends javax.swing.JFrame {
         DeleteClient = new javax.swing.JButton();
         back = new javax.swing.JLabel();
         SignOut = new javax.swing.JLabel();
+        AddTransaction = new javax.swing.JLabel();
+        ModifyTransaction = new javax.swing.JLabel();
+        ViewCaseDetails = new javax.swing.JLabel();
+        AddUser = new javax.swing.JLabel();
+        deleteTransaction = new javax.swing.JLabel();
+        GenerateReport = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(950, 750));
@@ -87,6 +90,54 @@ public class HomePage extends javax.swing.JFrame {
         });
         getContentPane().add(SignOut, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 610, 330, 50));
 
+        AddTransaction.setText("jLabel1");
+        AddTransaction.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                AddTransactionMouseClicked(evt);
+            }
+        });
+        getContentPane().add(AddTransaction, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 270, 320, 50));
+
+        ModifyTransaction.setText("jLabel1");
+        ModifyTransaction.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                ModifyTransactionMouseClicked(evt);
+            }
+        });
+        getContentPane().add(ModifyTransaction, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 350, 320, 60));
+
+        ViewCaseDetails.setText("jLabel1");
+        ViewCaseDetails.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                ViewCaseDetailsMouseClicked(evt);
+            }
+        });
+        getContentPane().add(ViewCaseDetails, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 440, 320, 50));
+
+        AddUser.setText("jLabel1");
+        AddUser.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                AddUserMouseClicked(evt);
+            }
+        });
+        getContentPane().add(AddUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 520, 320, 60));
+
+        deleteTransaction.setText("jLabel1");
+        deleteTransaction.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                deleteTransactionMouseClicked(evt);
+            }
+        });
+        getContentPane().add(deleteTransaction, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 350, 320, 60));
+
+        GenerateReport.setText("jLabel1");
+        GenerateReport.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                GenerateReportMouseClicked(evt);
+            }
+        });
+        getContentPane().add(GenerateReport, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 520, 320, 60));
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -121,11 +172,70 @@ public class HomePage extends javax.swing.JFrame {
     }//GEN-LAST:event_SignOutMouseClicked
 
     private void backMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_backMouseClicked
-        
+
         new LogIn().setVisible(true);
         this.dispose();
 
     }//GEN-LAST:event_backMouseClicked
+
+    private void AddTransactionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AddTransactionMouseClicked
+        new AddTransaction().setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_AddTransactionMouseClicked
+
+    private void ModifyTransactionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ModifyTransactionMouseClicked
+        try {
+            new modifyTransaction().setVisible(true);
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(HomePage.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        this.dispose();
+    }//GEN-LAST:event_ModifyTransactionMouseClicked
+
+    private void ViewCaseDetailsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ViewCaseDetailsMouseClicked
+
+        if (CurrentEmployee.getIsManager()) {
+            try {
+                new SearchCase().setVisible(true);
+            } catch (FileNotFoundException ex) {
+                Logger.getLogger(HomePage.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            this.dispose();
+        } else {
+            JOptionPane.showMessageDialog(null, "Only Manager Can Access This Page", "Cannot Access", JOptionPane.ERROR_MESSAGE);
+
+        }
+
+    }//GEN-LAST:event_ViewCaseDetailsMouseClicked
+
+    private void AddUserMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AddUserMouseClicked
+        if (CurrentEmployee.getIsManager()) {
+            new addUser().setVisible(true);
+            this.dispose();
+        } else {
+            JOptionPane.showMessageDialog(null, "Only Manager Can Access This Page", "Cannot Access", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_AddUserMouseClicked
+
+    private void deleteTransactionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_deleteTransactionMouseClicked
+        try {
+            new DeletTransaction().setVisible(true);
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(HomePage.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        this.dispose();
+    }//GEN-LAST:event_deleteTransactionMouseClicked
+
+    private void GenerateReportMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_GenerateReportMouseClicked
+
+        if (CurrentEmployee.getIsManager()) {
+            new generatReport().setVisible(true);
+            this.dispose();
+        } else {
+            JOptionPane.showMessageDialog(null, "Only Manager Can Access This Page", "Cannot Access", JOptionPane.ERROR_MESSAGE);
+
+        }
+    }//GEN-LAST:event_GenerateReportMouseClicked
 
     /**
      * @param args the command line arguments
@@ -165,10 +275,16 @@ public class HomePage extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton AddClient;
+    private javax.swing.JLabel AddTransaction;
+    private javax.swing.JLabel AddUser;
     private javax.swing.JButton DeleteClient;
+    private javax.swing.JLabel GenerateReport;
     private javax.swing.JLabel Interface;
     private javax.swing.JButton ModifyClient;
+    private javax.swing.JLabel ModifyTransaction;
     private javax.swing.JLabel SignOut;
+    private javax.swing.JLabel ViewCaseDetails;
     private javax.swing.JLabel back;
+    private javax.swing.JLabel deleteTransaction;
     // End of variables declaration//GEN-END:variables
 }

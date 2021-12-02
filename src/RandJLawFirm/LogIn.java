@@ -75,9 +75,6 @@ public class LogIn extends javax.swing.JFrame {
         String ID = forID.getText();
         String Password = forPass.getText();
 
-        // ==============
-        // WE SHOULD ADD ADDITIONAL CONDITION TO CHECK WHETHER THE ID EXISTS ON EMPLOYEE ARRAY OR NOT
-        // =============
         try {
             Boolean Found = User.checkLogInInformation(ID, Password);
             if (Found) {
