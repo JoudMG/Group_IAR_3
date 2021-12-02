@@ -27,23 +27,18 @@ public class FirstWindow extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jLabel5 = new javax.swing.JLabel();
+        Interface = new javax.swing.JLabel();
         SignUp = new javax.swing.JButton();
         LogIn1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(573, 591));
+        setPreferredSize(new java.awt.Dimension(970, 760));
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel5.setFont(new java.awt.Font("Times New Roman", 1, 36)); // NOI18N
-        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel5.setText("R&J Law Firm System");
-        jScrollPane1.setViewportView(jLabel5);
-
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 570, 150));
+        Interface.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaces/First Window.png"))); // NOI18N
+        Interface.setText("jLabel1");
+        Interface.setPreferredSize(new java.awt.Dimension(950, 700));
+        getContentPane().add(Interface, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         SignUp.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         SignUp.setText("Sign Up");
@@ -53,7 +48,7 @@ public class FirstWindow extends javax.swing.JFrame {
                 SignUpActionPerformed(evt);
             }
         });
-        jPanel1.add(SignUp, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 360, 190, 70));
+        getContentPane().add(SignUp, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 480, 360, 70));
 
         LogIn1.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         LogIn1.setText("Log In");
@@ -62,18 +57,7 @@ public class FirstWindow extends javax.swing.JFrame {
                 LogIn1ActionPerformed(evt);
             }
         });
-        jPanel1.add(LogIn1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 260, 190, 70));
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 591, Short.MAX_VALUE)
-        );
+        getContentPane().add(LogIn1, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 390, 370, 60));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -129,10 +113,8 @@ public class FirstWindow extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel Interface;
     private javax.swing.JButton LogIn1;
     private javax.swing.JButton SignUp;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
 }

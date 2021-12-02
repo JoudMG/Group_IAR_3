@@ -13,12 +13,12 @@ import java.util.logging.Logger;
  *
  * @author iijoo
  */
-public class EmployeeInterface extends javax.swing.JFrame {
+public class HomePage extends javax.swing.JFrame {
 
     /**
      * Creates new form EmployeeInterface
      */
-    public EmployeeInterface() {
+    public HomePage() {
         initComponents();
     }
 
@@ -31,11 +31,21 @@ public class EmployeeInterface extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        Interface = new javax.swing.JLabel();
         AddClient = new javax.swing.JButton();
         ModifyClient = new javax.swing.JButton();
         DeleteClient = new javax.swing.JButton();
+        back = new javax.swing.JLabel();
+        SignOut = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(950, 750));
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        Interface.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaces/HomePage.png"))); // NOI18N
+        Interface.setText("jLabel1");
+        Interface.setPreferredSize(new java.awt.Dimension(950, 700));
+        getContentPane().add(Interface, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 950, 700));
 
         AddClient.setText("Add Client");
         AddClient.addActionListener(new java.awt.event.ActionListener() {
@@ -43,6 +53,7 @@ public class EmployeeInterface extends javax.swing.JFrame {
                 AddClientActionPerformed(evt);
             }
         });
+        getContentPane().add(AddClient, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 180, 330, 60));
 
         ModifyClient.setText("Modify Client");
         ModifyClient.addActionListener(new java.awt.event.ActionListener() {
@@ -50,6 +61,7 @@ public class EmployeeInterface extends javax.swing.JFrame {
                 ModifyClientActionPerformed(evt);
             }
         });
+        getContentPane().add(ModifyClient, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 180, 330, 60));
 
         DeleteClient.setText("Delete Client");
         DeleteClient.addActionListener(new java.awt.event.ActionListener() {
@@ -57,30 +69,23 @@ public class EmployeeInterface extends javax.swing.JFrame {
                 DeleteClientActionPerformed(evt);
             }
         });
+        getContentPane().add(DeleteClient, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 260, 330, 70));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(205, 205, 205)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(ModifyClient, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(DeleteClient, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(AddClient, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(235, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(151, 151, 151)
-                .addComponent(AddClient)
-                .addGap(26, 26, 26)
-                .addComponent(ModifyClient)
-                .addGap(30, 30, 30)
-                .addComponent(DeleteClient)
-                .addContainerGap(259, Short.MAX_VALUE))
-        );
+        back.setText("jLabel1");
+        back.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                backMouseClicked(evt);
+            }
+        });
+        getContentPane().add(back, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 50, -1, 50));
+
+        SignOut.setText("jLabel1");
+        SignOut.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                SignOutMouseClicked(evt);
+            }
+        });
+        getContentPane().add(SignOut, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 610, 330, 50));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -94,7 +99,7 @@ public class EmployeeInterface extends javax.swing.JFrame {
         try {
             new ModifyClient().setVisible(true);
         } catch (FileNotFoundException ex) {
-            Logger.getLogger(EmployeeInterface.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(HomePage.class.getName()).log(Level.SEVERE, null, ex);
         }
         this.dispose();
     }//GEN-LAST:event_ModifyClientActionPerformed
@@ -103,10 +108,24 @@ public class EmployeeInterface extends javax.swing.JFrame {
         try {
             new DeleteClient().setVisible(true);
         } catch (FileNotFoundException ex) {
-            Logger.getLogger(EmployeeInterface.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(HomePage.class.getName()).log(Level.SEVERE, null, ex);
         }
         this.dispose();
     }//GEN-LAST:event_DeleteClientActionPerformed
+
+    private void SignOutMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SignOutMouseClicked
+
+        new FirstWindow().setVisible(true);
+        this.dispose();
+
+    }//GEN-LAST:event_SignOutMouseClicked
+
+    private void backMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_backMouseClicked
+        
+        new LogIn().setVisible(true);
+        this.dispose();
+
+    }//GEN-LAST:event_backMouseClicked
 
     /**
      * @param args the command line arguments
@@ -125,20 +144,21 @@ public class EmployeeInterface extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(EmployeeInterface.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(HomePage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(EmployeeInterface.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(HomePage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(EmployeeInterface.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(HomePage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(EmployeeInterface.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(HomePage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new EmployeeInterface().setVisible(true);
+                new HomePage().setVisible(true);
             }
         });
     }
@@ -146,6 +166,9 @@ public class EmployeeInterface extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton AddClient;
     private javax.swing.JButton DeleteClient;
+    private javax.swing.JLabel Interface;
     private javax.swing.JButton ModifyClient;
+    private javax.swing.JLabel SignOut;
+    private javax.swing.JLabel back;
     // End of variables declaration//GEN-END:variables
 }
