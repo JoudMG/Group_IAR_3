@@ -15,6 +15,7 @@ public class FirstWindow extends javax.swing.JFrame {
      * Creates new form FirstWindow
      */
     public FirstWindow() {
+        Employee.AllEmployees();
         initComponents();
     }
 
@@ -65,7 +66,6 @@ public class FirstWindow extends javax.swing.JFrame {
     private void SignUpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SignUpActionPerformed
         this.dispose();
         new SignUp().setVisible(true);
-
 
 
     }//GEN-LAST:event_SignUpActionPerformed
