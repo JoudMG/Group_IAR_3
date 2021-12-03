@@ -85,13 +85,18 @@ public class ModifyTransaction extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        caseNum.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         caseNum.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 caseNumActionPerformed(evt);
             }
         });
         getContentPane().add(caseNum, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 520, 200, 41));
+
+        caseTitle.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         getContentPane().add(caseTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 520, 200, 41));
+
+        Status.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         getContentPane().add(Status, new org.netbeans.lib.awtextra.AbsoluteConstraints(506, 519, 200, 41));
 
         jTable1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
@@ -121,6 +126,7 @@ public class ModifyTransaction extends javax.swing.JFrame {
 
         getContentPane().add(ClientInfo, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 206, 810, 230));
 
+        CaseDoc.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         CaseDoc.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 CaseDocActionPerformed(evt);
@@ -191,7 +197,8 @@ public class ModifyTransaction extends javax.swing.JFrame {
                 if (!caseNum.getText().equals(Transaction.getTransactions().get(index).getCaseNumber())) {
 
                     // The method will only overwrite on previous value on the file
-                    Transaction.ModifyTransaction((index * TransactionAttributes) + 1, caseNum.getText());
+                    Transaction.ModifyTransaction(("TransactionFile.txt"),
+                            (index * TransactionAttributes) + 1, caseNum.getText());
                     // modify on arraylist
                     Transaction.getTransactions().get(index).setCaseNumber(caseNum.getText());
                     changeFound = true;
@@ -199,21 +206,24 @@ public class ModifyTransaction extends javax.swing.JFrame {
                 }
                 if (!caseTitle.getText().equals(Transaction.getTransactions().get(index).getCaseTitle())) {
 
-                    Transaction.ModifyTransaction((index * TransactionAttributes) + 2, caseTitle.getText());
+                    Transaction.ModifyTransaction(("TransactionFile.txt"),
+                            (index * TransactionAttributes) + 2, caseTitle.getText());
 
                     Transaction.getTransactions().get(index).setCaseTitle(caseTitle.getText());
                     changeFound = true;
                 }
                 if (!Status.getText().equals(Transaction.getTransactions().get(index).getStatus())) {
 
-                    Transaction.ModifyTransaction((index * TransactionAttributes) + 4, Status.getText());
+                    Transaction.ModifyTransaction(("TransactionFile.txt"),
+                            (index * TransactionAttributes) + 4, Status.getText());
 
                     Transaction.getTransactions().get(index).setStatus(Status.getText());
                     changeFound = true;
                 }
                 if (!("Transactions\\" + CaseDoc.getText()).equals(Transaction.getTransactions().get(index).getCaseDoc())) {
 
-                    Transaction.ModifyTransaction((index * TransactionAttributes) + 3, "Transactions\\" + caseDoc.getName());
+                    Transaction.ModifyTransaction(("TransactionFile.txt"),
+                            (index * TransactionAttributes) + 3, "Transactions\\" + caseDoc.getName());
 
                     Transaction.getTransactions().get(index).setCaseDoc("Transactions\\" + caseDoc.getName());
                     changeFound = true;

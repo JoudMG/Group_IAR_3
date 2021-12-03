@@ -158,7 +158,7 @@ public class DeletTransaction extends javax.swing.JFrame {
 
                 if (choice == JOptionPane.YES_OPTION) {
                     // delete from the file "Our Database"
-                    Transaction.DeleteTrans(index * 4);
+                    Transaction.DeleteTrans(("TransactionFile.txt"),index * 4);
                     // delete from the arraylist
                     Transaction.getTransactions().remove(index);
                     // set all things back

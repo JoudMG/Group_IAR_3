@@ -5,6 +5,7 @@ public class Person {
     private String FirstName;
     private String LastName;
     private String Phone;
+    private String Email;
 
     public Person() {
     }
@@ -13,6 +14,17 @@ public class Person {
         this.FirstName = FirstName;
         this.LastName = LastName;
         this.Phone = Phone;
+    }
+
+    public Person(String FirstName, String LastName, String Phone, String Email) {
+        this.FirstName = FirstName;
+        this.LastName = LastName;
+        this.Phone = Phone;
+        this.Email = Email;
+    }
+
+    public Person(String Email) {
+        this.Email = Email;
     }
 
     public String getFirstName() {
@@ -37,6 +49,14 @@ public class Person {
 
     public void setPhone(String Phone) {
         this.Phone = Phone;
+    }
+
+    public String getEmail() {
+        return Email;
+    }
+
+    public void setEmail(String Email) {
+        this.Email = Email;
     }
 
     @Override

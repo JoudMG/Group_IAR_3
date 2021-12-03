@@ -20,7 +20,6 @@ public class Transaction {
     private String status;
     private static ArrayList<Transaction> transactions;
     private static File TransactionFile = new File("TransactionFile.txt");
-
     // This Attribute is ONLY Used in Runtime To Save Found Case Index By SearchCase Class
     // So we Can Share This Value with Other Classes
     private static int FoundCaseIndex;
@@ -102,25 +101,26 @@ public class Transaction {
         }
     }
 
-    public static void ModifyTransaction(int lineNumber, String data) throws FileNotFoundException, IOException {
-
+    public static void ModifyTransaction(String fileName,int lineNumber, String data) throws FileNotFoundException, IOException {
+        File file = new File(fileName);
         // get all file content as lines into a list of string
-        List<String> lines = Files.readAllLines(TransactionFile.toPath(), StandardCharsets.UTF_8);
+        List<String> lines = Files.readAllLines(file.toPath(), StandardCharsets.UTF_8);
         // modify specific line with passed data (new value)
         lines.set(lineNumber - 1, data);
         // set changes to file 
-        Files.write(TransactionFile.toPath(), lines, StandardCharsets.UTF_8);
+        Files.write(file.toPath(), lines, StandardCharsets.UTF_8);
 
     }
 
-    public static void DeleteTrans(int TransactionIndexNumber) throws IOException {
+    public static void DeleteTrans(String fileName, int TransactionIndexNumber) throws IOException {
+        File file = new File(fileName);
         // get all file content as lines into a list of string
-        List<String> lines = Files.readAllLines(TransactionFile.toPath(), StandardCharsets.UTF_8);
+        List<String> lines = Files.readAllLines(file.toPath(), StandardCharsets.UTF_8);
         // Delete lines that contains client information 
         // each client has 4 lines
         lines.subList(TransactionIndexNumber, TransactionIndexNumber + 4).clear();
         // set changes to file 
-        Files.write(TransactionFile.toPath(), lines, StandardCharsets.UTF_8);
+        Files.write(file.toPath(), lines, StandardCharsets.UTF_8);
     }
 
     public static Boolean isCaseNumberVaild(String ID) {

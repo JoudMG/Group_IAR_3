@@ -14,8 +14,12 @@ public class Employee extends Person {
         this.isManager = isManager;
     }
 
+    public Employee(String ID, String email) {
+        super(email);
+        this.ID = ID;
+    }
+
     public Employee(String ID) {
-        super();
         this.ID = ID;
     }
 

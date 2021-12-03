@@ -12,15 +12,13 @@ import java.util.Scanner;
 public class User extends Employee {
 
     private String password;
-    private String email;
     private static ArrayList<User> UserDb = new ArrayList<>();
     private static File database = new File("UserDataBase.txt");
     private static String CurrentUserID;
 
     public User(String ID, String password, String email) {
-        super(ID);
+        super(ID,email);
         this.password = password;
-        this.email = email;
     }
 
     public User(String ID, String password) {
@@ -132,7 +130,7 @@ public class User extends Employee {
                 }
             }
             Report += "----- USER ( " + (i + 1) + " ) ------------------------------------------------------------\n";
-            Report += "      ID:   " + User.UserDb.get(i).getID() + "                  Email:   " + User.UserDb.get(i).email + "\n";
+            Report += "      ID:   " + User.UserDb.get(i).getID() + "                  Email:   " + User.UserDb.get(i).getEmail() + "\n";
             Report += "      First Name:   " + CurrentEmployee.getFirstName() + "\n";
             Report += "      Last Name:    " + CurrentEmployee.getLastName() + "\n";
             Report += "      Phone Number: " + CurrentEmployee.getPhone() + "\n";
@@ -160,9 +158,6 @@ public class User extends Employee {
         return super.getID();
     }
 
-    public String getEmail() {
-        return email;
-    }
 
     public String getPassword() {
         return password;
@@ -178,10 +173,6 @@ public class User extends Employee {
 
     public void setPassword(String password) {
         this.password = password;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
     }
 
     public static void setUserDb(ArrayList<User> UserDb) {

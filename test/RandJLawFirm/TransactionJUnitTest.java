@@ -71,6 +71,40 @@ public class TransactionJUnitTest {
     }
 
     @Test
+    public void testModifyTransaction() throws IOException {
+        System.out.println("ModifyTransaction");
+        Transaction Temp = new Transaction("1122", "Civil Case", "Case Doc33.pdf", "Active");
+        Transaction.AddTransaction("TestFile.txt", Temp); // save Object Info. On File
+        // Start to Modify Object, Then Modify it on The Database "File"
+        Transaction.ModifyTransaction("TestFile.txt", 4, "Complete");// Modify Case Status To Complete,
+        //4 Indicates the status line on the file
+        // Read File Content to Ensure The Method Modified Object data On File
+        String FileContent = "";
+        while (Reader.hasNextLine()) {
+            FileContent += Reader.nextLine();
+        }
+        String Expected = "1122" + "Civil Case" + "Case Doc33.pdf" + "Complete";
+        assertEquals(Expected, FileContent);
+    }
+    
+    @Test
+    public void testDeleteTransaction() throws IOException {
+        System.out.println("DeleteTransaction");
+        Transaction Temp = new Transaction("2288", "Criminal Case", "Criminal Case File.pdf", "Pending");
+        Transaction.AddTransaction("TestFile.txt", Temp); // save Object Info. On File
+        // After saving The Transaction to File, Now Invoke DeleteTransaction to Remove from File
+        Transaction.DeleteTrans("TestFile.txt", 0);// Modify Case Status To Complete,
+        // 0 Indicates The Transaction Index on File, Since The File Empty It'll Be First One
+        // Read File Content to Ensure The Method Delete Object data On File
+        String FileContent = "";
+        while (Reader.hasNextLine()) {
+            FileContent += Reader.nextLine();
+        }
+        String Expected = ""; // The File Should be Empty
+        assertEquals(Expected, FileContent);
+    }
+        
+    @Test
     public void testGenerateTransactionsReport() throws FileNotFoundException {
         System.out.println("GenerateTransactionsReport");
         assertNotNull(Transaction.GenerateTransactionsReport());

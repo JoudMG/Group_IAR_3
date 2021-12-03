@@ -92,7 +92,7 @@ public class GeneratReport extends javax.swing.JFrame {
         try {
             myObj = new File("Client Report.txt");
             writer = new PrintWriter("Client Report.txt");
-            writer.println(Client.GenerateTransactionsReport());
+            writer.println(Client.GenerateClientsReport());
             writer.flush();
             writer.close();
 

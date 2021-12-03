@@ -17,44 +17,21 @@ import java.util.Scanner;
 
 public class Client extends Person {
 
-//    private String FirstName;
-//    private String LastName;
     private String SSN;
-    private String Email;
-//    private String Phone;
     private String BankIBAN;
     private char Gender;
     private static ArrayList<Client> Clients = new ArrayList<>();
     private static File ClientFile = new File("ClientsFile.txt");
 
     public Client(String FirstName, String LastName, String SSN, String Email, String Phone, String BankIBAN, char Gender) {
-        super(FirstName, LastName, Phone);
+        super(FirstName, LastName, Phone, Email);
         this.SSN = SSN;
-        this.Email = Email;
         this.BankIBAN = BankIBAN;
         this.Gender = Gender;
     }
 
-    public static void ReadInformations() throws FileNotFoundException {
-
-        if (Clients.isEmpty() && ClientFile.exists()) {// if not empty, thats mean it alredy enter this method
-            Scanner scan = new Scanner(ClientFile);
-            while (scan.hasNextLine()) {
-                // add existing clients to arraylist
-                Clients.add(new Client(scan.nextLine(), scan.nextLine(), scan.nextLine(),
-                        scan.nextLine(), scan.nextLine(), scan.nextLine(), scan.nextLine().charAt(0)));
-
-            }
-
-        }
-    }
-
     public String getSSN() {
         return SSN;
-    }
-
-    public String getEmail() {
-        return Email;
     }
 
     public String getBankIBAN() {
@@ -69,16 +46,16 @@ public class Client extends Person {
         this.SSN = SSN;
     }
 
-    public void setEmail(String Email) {
-        this.Email = Email;
-    }
-
     public void setBankIBAN(String BankIBAN) {
         this.BankIBAN = BankIBAN;
     }
 
     public void setGender(char Gender) {
         this.Gender = Gender;
+    }
+
+    public static ArrayList<Client> getClients() {
+        return Clients;
     }
 
     public static void AddClient(Client newClient) throws FileNotFoundException, IOException {
@@ -103,6 +80,20 @@ public class Client extends Person {
 
     }
 
+    public static void ReadInformations() throws FileNotFoundException {
+
+        if (Clients.isEmpty() && ClientFile.exists()) {// if not empty, thats mean it alredy enter this method
+            Scanner scan = new Scanner(ClientFile);
+            while (scan.hasNextLine()) {
+                // add existing clients to arraylist
+                Clients.add(new Client(scan.nextLine(), scan.nextLine(), scan.nextLine(),
+                        scan.nextLine(), scan.nextLine(), scan.nextLine(), scan.nextLine().charAt(0)));
+
+            }
+
+        }
+    }
+
     public static void ModifyClientInformationOnDB(int lineNumber, String data) throws IOException {
         // get all file content as lines into a list of string
         List<String> lines = Files.readAllLines(ClientFile.toPath(), StandardCharsets.UTF_8);
@@ -122,7 +113,7 @@ public class Client extends Person {
         Files.write(ClientFile.toPath(), lines, StandardCharsets.UTF_8);
     }
 
-    public static String GenerateTransactionsReport() throws FileNotFoundException {
+    public static String GenerateClientsReport() throws FileNotFoundException {
         String Report = "";
 
         Report += "=============================================================================\n";
@@ -162,15 +153,9 @@ public class Client extends Person {
 
     }
 
-    public static ArrayList<Client> getClients() {
-        return Clients;
-    }
-
     @Override
     public String toString() {
         return super.toString(); //To change body of generated methods, choose Tools | Templates.
     }
-    
-    
 
 }
