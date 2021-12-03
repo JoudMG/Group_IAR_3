@@ -41,6 +41,8 @@ public class AddUser extends javax.swing.JFrame {
         forPass = new javax.swing.JTextField();
         forEmail = new javax.swing.JTextField();
         forID = new javax.swing.JTextField();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
         Interface = new javax.swing.JLabel();
         ADD = new javax.swing.JButton();
         back = new javax.swing.JLabel();
@@ -80,6 +82,16 @@ public class AddUser extends javax.swing.JFrame {
             }
         });
         jPanel1.add(forID, new org.netbeans.lib.awtextra.AbsoluteConstraints(318, 260, 315, 50));
+
+        jLabel5.setFont(new java.awt.Font("Tahoma", 1, 15)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(27, 56, 65));
+        jLabel5.setText("* Should be At least 8 Characters ");
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 380, -1, -1));
+
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 15)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(27, 56, 65));
+        jLabel1.setText("* Should Contain At least 1 Digit, 1 Letter");
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 400, -1, -1));
 
         Interface.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaces/add user.png"))); // NOI18N
         jPanel1.add(Interface, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -23, -1, 740));
@@ -147,7 +159,11 @@ public class AddUser extends javax.swing.JFrame {
                 Boolean isEmployee = Employee.isEmployeeID(forID.getText());
                 if (!isEmployee) {// Check if Entered Id Exist in Employees Data
                     JOptionPane.showMessageDialog(null, "Invalid ID, No Employee ID Match The ID You Entered");
-                } else if (User.isIDExist(forID.getText())) {
+                } 
+                else if (!User.isStrongPassword(forPass.getText())) {
+                    JOptionPane.showMessageDialog(null, "Invalid Password, It is Weak Password");
+                }
+                else if (User.isIDExist(forID.getText())) {
                     JOptionPane.showMessageDialog(null, "User ID is Already Registered!");
                 } else {
                     // Add new add user to the array and store User information on the file
@@ -212,9 +228,11 @@ public class AddUser extends javax.swing.JFrame {
     private javax.swing.JTextField forEmail;
     private javax.swing.JTextField forID;
     private javax.swing.JTextField forPass;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 }

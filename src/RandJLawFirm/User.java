@@ -28,8 +28,10 @@ public class User extends Employee {
         this.password = password;
     }
 
-    
-    
+    public User() {
+        super(null);
+    }
+
     static void ReadInformations() throws FileNotFoundException {
         if (UserDb.isEmpty()) {
             Scanner scan = new Scanner(database);
@@ -38,7 +40,6 @@ public class User extends Employee {
             }
         }
     }
-
 
     public static void RegisterUser(User newUser) throws FileNotFoundException, IOException {
 
@@ -54,9 +55,7 @@ public class User extends Employee {
             CurrentUserID = newUser.getID();
 
         } catch (IOException e) {
-
         }
-
     }
 
     public static Boolean isIDExist(String ID) {
@@ -67,6 +66,34 @@ public class User extends Employee {
             }
         }
         return false;
+    }
+
+    public static Boolean isStrongPassword(String password) {
+
+        char ch;
+        boolean capitalFlag = false;
+        boolean numberFlag = false;
+        for (int i = 0; i < password.length(); i++) {
+            ch = password.charAt(i);
+            if (Character.isDigit(ch)) {
+                numberFlag = true;
+            } else if (Character.isUpperCase(ch)) {
+                capitalFlag = true;
+            }
+            if (numberFlag && capitalFlag && (password.length() > 7)) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    public static boolean isValidEmail(String email) {
+        if (!email.contains("@") || !email.contains(".")) {
+            return false;
+        }
+        return true;
+
     }
 
     public static boolean checkLogInInformation(String ID, String Password) throws FileNotFoundException {
@@ -82,7 +109,6 @@ public class User extends Employee {
         }
         return Found;
     }
-
 
     public static String GenerateUserReport() throws FileNotFoundException {
         String Report = "";
@@ -117,21 +143,20 @@ public class User extends Employee {
             }
             Report += "=============================================================================\n";
         }
-        
-        
-                Report += "\n                                TOTAL USERS  :  " + (UserDb.size()) + "\n";
+
+        Report += "\n                                TOTAL USERS  :  " + (UserDb.size()) + "\n";
 
         Report += "\n-------------------- USERS REPORT GENERATED SUCCESSFULLY---------------------\n";
         Report += "=============================================================================\n";
 
-
         return Report;
     }
-    
+
     public static String getCurrentUserID() {
         return CurrentUserID;
     }
-     public String getID() {
+
+    public String getID() {
         return super.getID();
     }
 
@@ -170,12 +195,10 @@ public class User extends Employee {
     public static void setCurrentUserID(String CurrentUserID) {
         User.CurrentUserID = CurrentUserID;
     }
-    
+
     @Override
     public String toString() {
         return super.toString(); //To change body of generated methods, choose Tools | Templates.
     }
-    
-    
 
 }

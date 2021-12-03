@@ -19,17 +19,10 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumnModel;
 import javax.swing.table.TableModel;
 
-/**
- *
- * @author sania
- */
 public class ModifyTransaction extends javax.swing.JFrame {
 
-    /**
-     * Creates new form ModifyTransaction
-     */
     File CaseFile;
-    int index;
+    int index =-1;
     private String filename;
     private File caseDoc;
 
@@ -43,13 +36,13 @@ public class ModifyTransaction extends javax.swing.JFrame {
         columnModel.getColumn(2).setPreferredWidth(40);
         columnModel.getColumn(3).setPreferredWidth(10);
 
-        // declare table variable to start fill the table with clients information
+        // declare table variable to start fill the table with Transaction information
         DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
         // clear table from any values 
         model.setRowCount(0);
-        // fill clients arraylist
+        // fill Transaction arraylist
         Transaction.ReadTranInformations();
-        // insert clients information into the table 
+        // insert Transaction information into the table 
         for (int i = 0; i < Transaction.getTransactions().size(); i++) {
             Vector row = new Vector();
 
@@ -77,72 +70,31 @@ public class ModifyTransaction extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel6 = new javax.swing.JLabel();
         caseNum = new javax.swing.JTextField();
-        jLabel2 = new javax.swing.JLabel();
         caseTitle = new javax.swing.JTextField();
-        jLabel5 = new javax.swing.JLabel();
         Status = new javax.swing.JTextField();
-        jPanel2 = new javax.swing.JPanel();
-        jLabel4 = new javax.swing.JLabel();
-        jButton2 = new javax.swing.JButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
+        ClientInfo = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
-        jLabel7 = new javax.swing.JLabel();
         CaseDoc = new javax.swing.JTextField();
+        Interface = new javax.swing.JLabel();
+        ModifyTrans = new javax.swing.JButton();
         OpenFile = new javax.swing.JButton();
-        OpenFile1 = new javax.swing.JButton();
+        ReplaceFile = new javax.swing.JButton();
+        back = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        jLabel6.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
-        jLabel6.setText("Case Number:");
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         caseNum.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 caseNumActionPerformed(evt);
             }
         });
+        getContentPane().add(caseNum, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 520, 200, 41));
+        getContentPane().add(caseTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 520, 200, 41));
+        getContentPane().add(Status, new org.netbeans.lib.awtextra.AbsoluteConstraints(506, 519, 200, 41));
 
-        jLabel2.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
-        jLabel2.setText("Case Title:");
-
-        jLabel5.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
-        jLabel5.setText("Status:");
-
-        jPanel2.setBackground(new java.awt.Color(236, 236, 236));
-        jPanel2.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jPanel2.setPreferredSize(new java.awt.Dimension(600, 100));
-
-        jLabel4.setFont(new java.awt.Font("Times New Roman", 1, 36)); // NOI18N
-        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel4.setText(" Modify Transaction");
-
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(164, 164, 164)
-                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 363, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(197, Short.MAX_VALUE))
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, 46, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-
-        jButton2.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
-        jButton2.setText("Modify");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
-            }
-        });
-
+        jTable1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -151,6 +103,8 @@ public class ModifyTransaction extends javax.swing.JFrame {
                 "           Case number", "           Case title", "Case Document", "            Statu"
             }
         ));
+        jTable1.setFillsViewportHeight(true);
+        jTable1.setRowHeight(18);
         jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jTable1MouseClicked(evt);
@@ -163,16 +117,29 @@ public class ModifyTransaction extends javax.swing.JFrame {
                 jTable1InputMethodTextChanged(evt);
             }
         });
-        jScrollPane1.setViewportView(jTable1);
+        ClientInfo.setViewportView(jTable1);
 
-        jLabel7.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
-        jLabel7.setText("Case Document");
+        getContentPane().add(ClientInfo, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 206, 810, 230));
 
         CaseDoc.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 CaseDocActionPerformed(evt);
             }
         });
+        getContentPane().add(CaseDoc, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 600, 200, 41));
+
+        Interface.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaces/ModifyTransaction.png"))); // NOI18N
+        Interface.setText("jLabel1");
+        getContentPane().add(Interface, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 950, -1));
+
+        ModifyTrans.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
+        ModifyTrans.setText("Modify");
+        ModifyTrans.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ModifyTransActionPerformed(evt);
+            }
+        });
+        getContentPane().add(ModifyTrans, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 620, 150, 50));
 
         OpenFile.setBackground(new java.awt.Color(204, 204, 204));
         OpenFile.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
@@ -182,80 +149,25 @@ public class ModifyTransaction extends javax.swing.JFrame {
                 OpenFileActionPerformed(evt);
             }
         });
+        getContentPane().add(OpenFile, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 600, 190, 40));
 
-        OpenFile1.setBackground(new java.awt.Color(204, 204, 204));
-        OpenFile1.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        OpenFile1.setText("Replace Document");
-        OpenFile1.addActionListener(new java.awt.event.ActionListener() {
+        ReplaceFile.setBackground(new java.awt.Color(204, 204, 204));
+        ReplaceFile.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        ReplaceFile.setText("Replace Document");
+        ReplaceFile.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                OpenFile1ActionPerformed(evt);
+                ReplaceFileActionPerformed(evt);
             }
         });
+        getContentPane().add(ReplaceFile, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 600, 180, 40));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 728, Short.MAX_VALUE)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(185, 185, 185)
-                        .addComponent(jButton2)
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel7)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(CaseDoc, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel6)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel5))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(caseTitle, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(caseNum, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(Status, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(OpenFile)
-                .addGap(32, 32, 32)
-                .addComponent(OpenFile1)
-                .addGap(32, 32, 32))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 299, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel6)
-                    .addComponent(caseNum, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(caseTitle, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(16, 16, 16)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(CaseDoc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel7)
-                    .addComponent(OpenFile)
-                    .addComponent(OpenFile1))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Status, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel5))
-                .addGap(39, 39, 39)
-                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-        );
+        back.setText("jLabel2");
+        back.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                backMouseClicked(evt);
+            }
+        });
+        getContentPane().add(back, new org.netbeans.lib.awtextra.AbsoluteConstraints(31, 40, 60, 70));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -264,56 +176,64 @@ public class ModifyTransaction extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_caseNumActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void ModifyTransActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ModifyTransActionPerformed
 
         try {
             int TransactionAttributes = 4;
             boolean changeFound = false;// to print massage to user 
-            if (!caseNum.getText().equals(Transaction.getTransactions().get(index).getCaseNumber())) {
+            if (index == -1) {
+                JOptionPane.showConfirmDialog(null,
+                        "You Did Not Select Transaction to Modify",
+                        "Select Transaction", JOptionPane.DEFAULT_OPTION,
+                        JOptionPane.INFORMATION_MESSAGE);
 
-                // The method will only overwrite on previous value on the file
-                Transaction.ModifyTransaction((index * TransactionAttributes) + 1, caseNum.getText());
-                // modify on arraylist
-                Transaction.getTransactions().get(index).setCaseNumber(caseNum.getText());
-                changeFound = true;
+            } else {
+                if (!caseNum.getText().equals(Transaction.getTransactions().get(index).getCaseNumber())) {
 
-            }
-            if (!caseTitle.getText().equals(Transaction.getTransactions().get(index).getCaseTitle())) {
+                    // The method will only overwrite on previous value on the file
+                    Transaction.ModifyTransaction((index * TransactionAttributes) + 1, caseNum.getText());
+                    // modify on arraylist
+                    Transaction.getTransactions().get(index).setCaseNumber(caseNum.getText());
+                    changeFound = true;
 
-                Transaction.ModifyTransaction((index * TransactionAttributes) + 2, caseTitle.getText());
+                }
+                if (!caseTitle.getText().equals(Transaction.getTransactions().get(index).getCaseTitle())) {
 
-                Transaction.getTransactions().get(index).setCaseTitle(caseTitle.getText());
-                changeFound = true;
-            }
-            if (!Status.getText().equals(Transaction.getTransactions().get(index).getStatus())) {
+                    Transaction.ModifyTransaction((index * TransactionAttributes) + 2, caseTitle.getText());
 
-                Transaction.ModifyTransaction((index * TransactionAttributes) + 4, Status.getText());
+                    Transaction.getTransactions().get(index).setCaseTitle(caseTitle.getText());
+                    changeFound = true;
+                }
+                if (!Status.getText().equals(Transaction.getTransactions().get(index).getStatus())) {
 
-                Transaction.getTransactions().get(index).setStatus(Status.getText());
-                changeFound = true;
-            }
-            if (!("Transactions\\" + CaseDoc.getText()).equals(Transaction.getTransactions().get(index).getCaseDoc())) {
+                    Transaction.ModifyTransaction((index * TransactionAttributes) + 4, Status.getText());
 
-                Transaction.ModifyTransaction((index * TransactionAttributes) + 3, "Transactions\\" + caseDoc.getName());
+                    Transaction.getTransactions().get(index).setStatus(Status.getText());
+                    changeFound = true;
+                }
+                if (!("Transactions\\" + CaseDoc.getText()).equals(Transaction.getTransactions().get(index).getCaseDoc())) {
 
-                Transaction.getTransactions().get(index).setCaseDoc("Transactions\\" + caseDoc.getName());
-                changeFound = true;
-            }
-            if (changeFound) {
+                    Transaction.ModifyTransaction((index * TransactionAttributes) + 3, "Transactions\\" + caseDoc.getName());
 
-                JOptionPane.showMessageDialog(null, "Client Information has been Modified successfully");
-                TableContent();// to update table with changes
+                    Transaction.getTransactions().get(index).setCaseDoc("Transactions\\" + caseDoc.getName());
+                    changeFound = true;
+                }
+                if (changeFound) {
 
-            }
-            if (!changeFound) {
-                JOptionPane.showMessageDialog(null, "You did not commit any modifications");
+                    JOptionPane.showMessageDialog(null, "Transaction Information has been Modified successfully");
+                    TableContent();// to update table with changes
+
+                }
+                if (!changeFound) {
+                    JOptionPane.showMessageDialog(null, "You did not commit any modifications");
+                }
             }
         } catch (IOException ex) {
             Logger.getLogger(ModifyTransaction.class.getName()).log(Level.SEVERE, null, ex);
         }
 
 
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_ModifyTransActionPerformed
 
     private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
         index = jTable1.getSelectedRow();
@@ -341,7 +261,7 @@ public class ModifyTransaction extends javax.swing.JFrame {
 
     }//GEN-LAST:event_OpenFileActionPerformed
 
-    private void OpenFile1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OpenFile1ActionPerformed
+    private void ReplaceFileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ReplaceFileActionPerformed
         filename = FileChooser.pickAFile();
         caseDoc = new File(filename);
         File currentDirFile = new File("Transactions\\" + caseDoc.getName());
@@ -350,11 +270,17 @@ public class ModifyTransaction extends javax.swing.JFrame {
         } catch (IOException ex) {
             Logger.getLogger(ModifyTransaction.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }//GEN-LAST:event_OpenFile1ActionPerformed
+    }//GEN-LAST:event_ReplaceFileActionPerformed
 
     private void CaseDocActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CaseDocActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_CaseDocActionPerformed
+
+    private void backMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_backMouseClicked
+        new HomePage().setVisible(true);
+        this.dispose();
+        // TODO add your handling code here:
+    }//GEN-LAST:event_backMouseClicked
 
     /**
      * @param args the command line arguments
@@ -398,19 +324,15 @@ public class ModifyTransaction extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField CaseDoc;
+    private javax.swing.JScrollPane ClientInfo;
+    private javax.swing.JLabel Interface;
+    private javax.swing.JButton ModifyTrans;
     private javax.swing.JButton OpenFile;
-    private javax.swing.JButton OpenFile1;
+    private javax.swing.JButton ReplaceFile;
     private javax.swing.JTextField Status;
+    private javax.swing.JLabel back;
     private javax.swing.JTextField caseNum;
     private javax.swing.JTextField caseTitle;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
 }

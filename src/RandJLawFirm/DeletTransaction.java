@@ -31,19 +31,19 @@ public class DeletTransaction extends javax.swing.JFrame {
     public void TableContent() throws FileNotFoundException {
 
         // Set Table Rows and Columns Sizes
-        jTable1.setRowHeight(20);
-        TableColumnModel columnModel = jTable1.getColumnModel();
+        CaseInfo.setRowHeight(20);
+        TableColumnModel columnModel = CaseInfo.getColumnModel();
         columnModel.getColumn(0).setPreferredWidth(50);
         columnModel.getColumn(1).setPreferredWidth(50);
         columnModel.getColumn(2).setPreferredWidth(10);
         columnModel.getColumn(3).setPreferredWidth(10);
-        // declare table variable to start fill the table with clients information
-        DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+        // declare table variable to start fill the table with Transaction information
+        DefaultTableModel model = (DefaultTableModel) CaseInfo.getModel();
         // clear table from any values 
         model.setRowCount(0);
-        // fill clients arraylist
+        // fill Transaction arraylist
         Transaction.ReadTranInformations();
-        // insert clients information into the table 
+        // insert Transaction information into the table 
         for (int i = 0; i < Transaction.getTransactions().size(); i++) {
             Vector row = new Vector();
 
@@ -72,15 +72,17 @@ public class DeletTransaction extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
-        jButton4 = new javax.swing.JButton();
-        jPanel2 = new javax.swing.JPanel();
-        jLabel3 = new javax.swing.JLabel();
+        Info = new javax.swing.JScrollPane();
+        CaseInfo = new javax.swing.JTable();
+        Interface = new javax.swing.JLabel();
+        DeleteTrans = new javax.swing.JButton();
+        Back = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        CaseInfo.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        CaseInfo.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -88,98 +90,64 @@ public class DeletTransaction extends javax.swing.JFrame {
                 "       Case number", "       Case title", "     Case Document", "       Statu"
             }
         ));
-        jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
+        CaseInfo.setFillsViewportHeight(true);
+        CaseInfo.setRowHeight(18);
+        CaseInfo.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jTable1MouseClicked(evt);
+                CaseInfoMouseClicked(evt);
             }
         });
-        jTable1.addInputMethodListener(new java.awt.event.InputMethodListener() {
+        CaseInfo.addInputMethodListener(new java.awt.event.InputMethodListener() {
             public void caretPositionChanged(java.awt.event.InputMethodEvent evt) {
             }
             public void inputMethodTextChanged(java.awt.event.InputMethodEvent evt) {
-                jTable1InputMethodTextChanged(evt);
+                CaseInfoInputMethodTextChanged(evt);
             }
         });
-        jScrollPane1.setViewportView(jTable1);
+        Info.setViewportView(CaseInfo);
 
-        jButton4.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
-        jButton4.setText("Delete");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        getContentPane().add(Info, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 210, 930, 380));
+
+        Interface.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaces/DeleteTransaction.png"))); // NOI18N
+        Interface.setText("jLabel1");
+        getContentPane().add(Interface, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 950, -1));
+
+        DeleteTrans.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
+        DeleteTrans.setText("Delete");
+        DeleteTrans.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                DeleteTransActionPerformed(evt);
             }
         });
+        getContentPane().add(DeleteTrans, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 630, 350, 45));
 
-        jPanel2.setBackground(new java.awt.Color(236, 236, 236));
-        jPanel2.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jPanel2.setPreferredSize(new java.awt.Dimension(600, 100));
-
-        jLabel3.setFont(new java.awt.Font("Times New Roman", 1, 36)); // NOI18N
-        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel3.setText(" Delet Transaction");
-
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(103, 103, 103)
-                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 363, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 52, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 589, Short.MAX_VALUE)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(21, 21, 21)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 535, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(236, 236, 236)
-                        .addComponent(jButton4)))
-                .addContainerGap(33, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 299, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 86, Short.MAX_VALUE)
-                .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(68, 68, 68))
-        );
+        Back.setText("jLabel1");
+        Back.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                BackMouseClicked(evt);
+            }
+        });
+        getContentPane().add(Back, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 40, -1, 60));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
-        index = jTable1.getSelectedRow();
-    }//GEN-LAST:event_jTable1MouseClicked
+    private void CaseInfoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CaseInfoMouseClicked
+        index = CaseInfo.getSelectedRow();
+    }//GEN-LAST:event_CaseInfoMouseClicked
 
-    private void jTable1InputMethodTextChanged(java.awt.event.InputMethodEvent evt) {//GEN-FIRST:event_jTable1InputMethodTextChanged
+    private void CaseInfoInputMethodTextChanged(java.awt.event.InputMethodEvent evt) {//GEN-FIRST:event_CaseInfoInputMethodTextChanged
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTable1InputMethodTextChanged
+    }//GEN-LAST:event_CaseInfoInputMethodTextChanged
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+    private void DeleteTransActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DeleteTransActionPerformed
         // TODO add your handling code here:
         try {
             if (index == -1) {
                 // In case user press "delete" button while user didn't choose client to delete
                 JOptionPane.showConfirmDialog(null,
-                        "You Did Not Select Client to Delete",
-                        "Select Client", JOptionPane.DEFAULT_OPTION,
+                        "You Did Not Select Transaction to Delete",
+                        "Select Transaction", JOptionPane.DEFAULT_OPTION,
                         JOptionPane.INFORMATION_MESSAGE);
             } else {
                 int choice = JOptionPane.showConfirmDialog(null,
@@ -198,7 +166,7 @@ public class DeletTransaction extends javax.swing.JFrame {
                     TableContent();
                 }
                 if (choice == JOptionPane.NO_OPTION) {
-                    // user don't want to delete the client
+                    // user don't want to delete the Transaction
                     // set all things back
                     index = -1;
                     TableContent();
@@ -210,7 +178,14 @@ public class DeletTransaction extends javax.swing.JFrame {
             Logger.getLogger(DeletTransaction.class.getName()).log(Level.SEVERE, null, ex);
         }
 
-    }//GEN-LAST:event_jButton4ActionPerformed
+    }//GEN-LAST:event_DeleteTransActionPerformed
+
+    private void BackMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BackMouseClicked
+new HomePage().setVisible(true);
+        this.dispose();
+
+        // TODO add your handling code here:
+    }//GEN-LAST:event_BackMouseClicked
 
     /**
      * @param args the command line arguments
@@ -252,10 +227,10 @@ public class DeletTransaction extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton4;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JLabel Back;
+    private javax.swing.JTable CaseInfo;
+    private javax.swing.JButton DeleteTrans;
+    private javax.swing.JScrollPane Info;
+    private javax.swing.JLabel Interface;
     // End of variables declaration//GEN-END:variables
 }

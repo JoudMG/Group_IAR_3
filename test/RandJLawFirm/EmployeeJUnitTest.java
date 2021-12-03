@@ -17,8 +17,8 @@ public class EmployeeJUnitTest {
 
     public EmployeeJUnitTest() {
     }
-
-    ArrayList<Employee> expectedEmployeesArray = new ArrayList<>();
+    
+    private ArrayList<Employee> expectedEmployeesArray = new ArrayList<>();
 
     @Before
     public void setUp() {
@@ -30,7 +30,6 @@ public class EmployeeJUnitTest {
         expectedEmployeesArray.add(new Employee("0005", "Noor", "Saad", "0505778838", false));
         expectedEmployeesArray.add(new Employee("0006", "Jood", "Musharraf", "0505393384", false));
         expectedEmployeesArray.add(new Employee("0007", "Rozana", "Sendii", "0534552838", false));
-
     }
 
     @Test
@@ -44,28 +43,29 @@ public class EmployeeJUnitTest {
     public void testGetManager() {
         System.out.println("getManager");
         Employee expectedManager = new Employee("0001", "Nora", "Ahmad", "0526372862", true);
-        Employee expectedManager1 = new Employee("0001", "Nora", "Ahmad", "0526372862", true);
-
-        System.out.println(expectedManager + "  " + Employee.getManager());
-//        assertEquals(expectedManager, Employee.getManager());
-        assertEquals(expectedManager, is(expectedManager1));
+        assertEquals(expectedManager, Employee.getManager());
     }
 
     @Test
     public void testAllEmployees() {
-        System.out.println("AllEmployees()");
-        Employee.AllEmployees(); // Fill Employees Array
-//        Object[] testEmployeeArray = Employee.getEmployees().toArray(); // Invoke Filled Array
-//        Assert.assertTrue(EqualsBuilder.reflectionEquals(expectedEmployeesArray.toArray(), Employee.getEmployees()));
-//        assertThat(Employee.getEmployees(), amePropertyValuesAs(expectedEmployeesArray.toArray()));
-//        assertTrue(Employee.getEmployees().equals(expectedEmployeesArray));
-        assertTrue( "check equality",Employee.getEmployees().toArray().equals(expectedEmployeesArray.toArray())  );
-//        assertEquals(new HashSet<Employee>(Employee.getEmployees()),
-//                new HashSet<Employee>(expectedEmployeesArray));
+        System.out.println("AllEmployees");
+        Employee.AllEmployees(); // Fill Employees Array in Employee Class
+        assertArrayEquals(Employee.getEmployees().toArray(), expectedEmployeesArray.toArray());
+
+    }
+
+    @Test
+    public void testIsEmployeeID() {
+        System.out.println("isEmployeeID");
+        // Test That Only Return (True) When The ID is Pre-defined in The System as Employee
+        assertFalse(Employee.isEmployeeID("1000"));// Should Return False Since No Employee Have This ID
+        assertTrue(Employee.isEmployeeID("0001"));// Should Return True Since It Is Exist That Employee Have This ID
+        assertTrue(Employee.isEmployeeID("0002"));// Should Return True Since It Is Exist That Employee Have This ID
     }
 
     @After
     public void tearDown() {
+        expectedEmployeesArray.clear();
     }
 
     // TODO add test methods here.

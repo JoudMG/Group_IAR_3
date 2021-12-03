@@ -32,6 +32,54 @@ public class Transaction {
         this.status = status;
     }
 
+    public void setCaseNumber(String caseNumber) {
+        this.caseNumber = caseNumber;
+    }
+
+    public void setCaseTitle(String caseTitle) {
+        this.caseTitle = caseTitle;
+    }
+
+    public void setCaseDoc(String caseDoc) {
+        this.caseDoc = caseDoc;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public String getCaseNumber() {
+        return caseNumber;
+    }
+
+    public String getCaseTitle() {
+        return caseTitle;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public String getCaseDoc() {
+        return caseDoc;
+    }
+
+    public static ArrayList<Transaction> getTransactions() {
+        return transactions;
+    }
+
+    public static File getTransactionFile() {
+        return TransactionFile;
+    }
+
+    public static int getFoundCaseIndex() {
+        return FoundCaseIndex;
+    }
+
+    public static void setFoundCaseIndex(int FoundCaseIndex) {
+        Transaction.FoundCaseIndex = FoundCaseIndex;
+    }
+
     public static void ReadTranInformations() throws FileNotFoundException {
         transactions = new ArrayList<>();
         if (transactions.isEmpty() && TransactionFile.exists()) {
@@ -75,46 +123,6 @@ public class Transaction {
         Files.write(TransactionFile.toPath(), lines, StandardCharsets.UTF_8);
     }
 
-    public void setCaseNumber(String caseNumber) {
-        this.caseNumber = caseNumber;
-    }
-
-    public void setCaseTitle(String caseTitle) {
-        this.caseTitle = caseTitle;
-    }
-
-    public void setCaseDoc(String caseDoc) {
-        this.caseDoc = caseDoc;
-    }
-
-    public void setStatus(String status) {
-        this.status = status;
-    }
-
-    public String getCaseNumber() {
-        return caseNumber;
-    }
-
-    public String getCaseTitle() {
-        return caseTitle;
-    }
-
-    public String getStatus() {
-        return status;
-    }
-
-    public String getCaseDoc() {
-        return caseDoc;
-    }
-
-    public static ArrayList<Transaction> getTransactions() {
-        return transactions;
-    }
-
-    public static File getTransactionFile() {
-        return TransactionFile;
-    }
-
     public static Boolean isCaseNumberVaild(String ID) {
         if (ID == null) {
             return false;
@@ -125,14 +133,6 @@ public class Transaction {
             return false;
         }
         return true;
-    }
-
-    public static int getFoundCaseIndex() {
-        return FoundCaseIndex;
-    }
-
-    public static void setFoundCaseIndex(int FoundCaseIndex) {
-        Transaction.FoundCaseIndex = FoundCaseIndex;
     }
 
     public static String GenerateTransactionsReport() throws FileNotFoundException {

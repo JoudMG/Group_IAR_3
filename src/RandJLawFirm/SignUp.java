@@ -30,6 +30,8 @@ public class SignUp extends javax.swing.JFrame {
         forConfirmPass = new javax.swing.JPasswordField();
         forEmail = new javax.swing.JTextField();
         forID = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
         Interface = new javax.swing.JLabel();
         SignUp = new javax.swing.JButton();
         back = new javax.swing.JLabel();
@@ -67,6 +69,16 @@ public class SignUp extends javax.swing.JFrame {
             }
         });
         getContentPane().add(forID, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 226, 312, 49));
+
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 15)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(27, 56, 65));
+        jLabel1.setText("* Should Contain At least 1 Digit, 1 Letter");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(632, 345, -1, -1));
+
+        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 15)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(27, 56, 65));
+        jLabel2.setText("* Should be At least 8 Characters ");
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(632, 325, -1, -1));
 
         Interface.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaces/SignUp.png"))); // NOI18N
         Interface.setText("jLabel1");
@@ -117,17 +129,19 @@ public class SignUp extends javax.swing.JFrame {
             // check what user enter
             if (UserID.isEmpty() || Password.isEmpty() || confirm_Password.isEmpty() || email.isEmpty()) {
                 JOptionPane.showMessageDialog(null, "Please fill all the feilds ");
-            }else if (!isEmployee) {// Check if Entered Id Exist in Employees Data
+            } else if (!isEmployee) {// Check if Entered Id Exist in Employees Data
                 JOptionPane.showMessageDialog(null, "Invalid ID, No Employee ID Match The ID You Entered");
-            }else {
+            } else {
                 // check password
                 if (!Password.equals(confirm_Password)) {
                     JOptionPane.showMessageDialog(null, "The password doesn't match the confirm passweord");
-                }
-                // check email
-                else if (!email.contains("@") && !email.contains(".")) {
+                } else if (!User.isStrongPassword(Password)) {
+                    JOptionPane.showMessageDialog(null, "Invalid Password, It is Weak Password");
+
+                } // check email
+                else if (!User.isValidEmail(email)) {
                     JOptionPane.showMessageDialog(null, "The email is not correct");
-                }else { // else if all entered data is correct 
+                } else { // else if all entered data is correct 
                     // create an object for the user to register
                     User newUser = new User(UserID, Password, email);
                     // read all informations of application users from the User File
@@ -206,6 +220,8 @@ public class SignUp extends javax.swing.JFrame {
     private javax.swing.JTextField forEmail;
     private javax.swing.JTextField forID;
     private javax.swing.JPasswordField forPass;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel2;
     // End of variables declaration//GEN-END:variables
 }
