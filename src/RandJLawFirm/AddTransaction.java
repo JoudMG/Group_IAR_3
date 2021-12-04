@@ -56,8 +56,14 @@ public class AddTransaction extends javax.swing.JFrame {
         FileNameLabel.setForeground(new java.awt.Color(102, 102, 102));
         FileNameLabel.setText("Add Attachment....");
         getContentPane().add(FileNameLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 520, 380, 50));
+
+        caseNum.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
         getContentPane().add(caseNum, new org.netbeans.lib.awtextra.AbsoluteConstraints(319, 216, 312, 50));
+
+        Status.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
         getContentPane().add(Status, new org.netbeans.lib.awtextra.AbsoluteConstraints(319, 316, 312, 50));
+
+        caseTitle.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
         getContentPane().add(caseTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(319, 417, 312, 50));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaces/addTransaction.png"))); // NOI18N

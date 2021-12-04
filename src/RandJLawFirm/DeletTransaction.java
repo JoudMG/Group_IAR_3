@@ -108,7 +108,7 @@ public class DeletTransaction extends javax.swing.JFrame {
 
         getContentPane().add(Info, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 210, 930, 380));
 
-        Interface.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaces/DeleteTransaction.png"))); // NOI18N
+        Interface.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaces/DeletTransaction.png"))); // NOI18N
         Interface.setText("jLabel1");
         getContentPane().add(Interface, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 950, -1));
 
