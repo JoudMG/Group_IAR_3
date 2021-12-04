@@ -1,5 +1,4 @@
 package RandJLawFirm;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
@@ -17,12 +16,13 @@ public class EmployeeJUnitTest {
 
     public EmployeeJUnitTest() {
     }
-    
-    private ArrayList<Employee> expectedEmployeesArray = new ArrayList<>();
+
+    private ArrayList<Employee> expectedEmployeesArray;
 
     @Before
-    public void setUp() {
+    public void setUp() {  
         // Create Expected Employees Array
+        expectedEmployeesArray = new ArrayList<>();
         expectedEmployeesArray.add(new Employee("0001", "Nora", "Ahmad", "0526372862", true));
         expectedEmployeesArray.add(new Employee("0002", "Farah", "Handom", "0567692392", false));
         expectedEmployeesArray.add(new Employee("0003", "Sara", "Mohammed", "0553789983", false));
@@ -58,9 +58,8 @@ public class EmployeeJUnitTest {
     public void testIsEmployeeID() {
         System.out.println("isEmployeeID");
         // Test That Only Return (True) When The ID is Pre-defined in The System as Employee
-        assertFalse(Employee.isEmployeeID("1000"));// Should Return False Since No Employee Have This ID
-        assertTrue(Employee.isEmployeeID("0001"));// Should Return True Since It Is Exist That Employee Have This ID
-        assertTrue(Employee.isEmployeeID("0002"));// Should Return True Since It Is Exist That Employee Have This ID
+        assertFalse(Employee.isEmployeeID("1000"));
+        // Should Return False Since No Employee Have This ID
     }
 
     @After
